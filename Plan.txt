@@ -1,0 +1,20 @@
+card attributes:
+	value
+Numbered Card:
+	color( value )
+Special Card:
+	anything not needed
+Reverse:
+	color
+Draw:
+	int for number of cards to be drawn (which is value)
+Color change:
+	a string for which color
+Skip:
+	color ( value )
+Draw two:
+	color
+Draw four:
+	anything not needed
+wild:
+	anything not needed		 
