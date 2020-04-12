@@ -18,3 +18,18 @@ Draw four:
 	anything not needed
 wild:
 	anything not needed		 
+
+
+It is a two player UNO game
+
+we should linked lists to store the cards sequence and to keep track of all the cards that are present with a player
+
+The Server will generate a list of cards (shuffled)  and  give the alternate 7 or 13 cards to each player
+
+the cards are displayed according to the code they have
+
+to select the card player should press the nmber of the card in their list and then they start the play
+
+if there is one card they should type uno
+
+when the number of cards in the list is 0 they win
