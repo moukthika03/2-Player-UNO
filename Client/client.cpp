@@ -10,9 +10,8 @@ client::client(QObject* parent):QObject(parent)
     socket = new QTcpSocket(this);
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
     socket->connectToHost("localhost", 9999);
-    if (socket->waitForConnected(3000))
+    if (socket->waitForConnected(30000))
         qDebug("Connected!");
-    //qDebug() << "Connected!!!";
 }
 
 void client::readyRead()
