@@ -24,6 +24,7 @@ void client::readyRead()
          qDebug() << buf;
         cin >> buf;
        socket->write(buf);
+       socket->flush();
 
     qDebug("\nDone");
 

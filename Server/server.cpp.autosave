@@ -24,7 +24,7 @@ void server::newConnection()
     QTcpSocket *socket = ser->nextPendingConnection();
     socket->write("Hello client this is the QTcpServer on port 9999");
     socket->flush();
-
+    
     socket->waitForBytesWritten();
     char buf[1024] = {0};
          //str = QTextCodec::codecForMib(1015)->toUnicode(socket->readLine());
