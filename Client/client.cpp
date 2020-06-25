@@ -22,8 +22,9 @@ void client::readyRead()
          //str = QTextCodec::codecForMib(1015)->toUnicode(socket->readLine());
          socket->read(buf, sizeof(buf));
          qDebug() << buf;
-        cin >> buf;
-       socket->write(buf);
+       // cin >> buf;
+       socket->write("buf");
+       socket->flush();
 
     qDebug("\nDone");
 

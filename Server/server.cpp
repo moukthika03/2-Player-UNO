@@ -25,12 +25,14 @@ void server::newConnection()
     socket->write("Hello client this is the QTcpServer on port 9999");
     socket->flush();
 
-    socket->waitForBytesWritten();
-    char buf[1024] = {0};
-         //str = QTextCodec::codecForMib(1015)->toUnicode(socket->readLine());
-         socket->read(buf, sizeof(buf));
-         qDebug() << buf;
-
+    socket->waitForBytesWritten(30000);
     qDebug() <<  "Write done";
+    socket->waitForReadyRead();
+    char* buf = new char [1024];
+    //str = QTextCodec::codecForMib(1015)->toUnicode(socket->readLine());
+    socket->read(buf, sizeof(buf));
+    qDebug() << buf;
+
+
     socket->close();
 }
