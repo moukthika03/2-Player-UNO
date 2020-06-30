@@ -22,8 +22,7 @@ void server::newConnection()
     qDebug() <<  "Connected";
     // need to grab the socket
     QTcpSocket *socket = ser->nextPendingConnection();
-    char* buf = new char [1024];
-
+    char buf[1024] = {0};
     socket->write("Hello client this is the QTcpServer on port 9999");
     socket->flush();
     socket->waitForBytesWritten(30000);
@@ -31,6 +30,13 @@ void server::newConnection()
     {
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
+
+        if(!strcmp(buf, "end") || !strcmp(buf, "End") || !strcmp(buf, "END"))
+        {
+            cout << "Client closed the connection" << endl;
+            cout << "Closing connection...";
+            break;
+        }
         cout << "\n\nMessage sent by Client is: " << buf;
 
         cout << "\n\nEnter the message: ";

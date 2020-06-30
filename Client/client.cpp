@@ -1,3 +1,4 @@
+
 #include "client.h"
 #include <QDebug>
 #include <iostream>
@@ -23,16 +24,17 @@ void client::readyRead()
     cout << buf;
     while(buf[0] != '!')
     {
+        char buf_2[1024] = {0};
         cout << "\n\nEnter the message: ";
-        cin >> buf;
+        cin >> buf_2;
         cin.sync();
-        socket->write(buf);
+        socket->write(buf_2);
         socket->flush();
         socket->waitForBytesWritten(30000);
 
         socket->waitForReadyRead();
-        socket->read(buf, sizeof(buf));
-        cout << "Message sent by Server is: " << buf << endl;
+        socket->read(buf_2, sizeof(buf_2));
+        cout << "Message sent by Server is: " << buf_2 << endl;
     }
 
     qDebug("\nCompleted");
