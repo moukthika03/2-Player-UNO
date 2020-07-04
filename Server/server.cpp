@@ -46,7 +46,7 @@ void server::newConnection()
         socket->flush();
         socket->waitForBytesWritten(30000);
     }
-    cout << "\n\nClosing the socket";
+
 
     socket->close();
 }

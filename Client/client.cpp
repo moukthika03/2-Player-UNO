@@ -34,6 +34,13 @@ void client::readyRead()
 
         socket->waitForReadyRead();
         socket->read(buf_2, sizeof(buf_2));
+        if(!strcmp(buf, "end") || !strcmp(buf, "End") || !strcmp(buf, "END"))
+        {
+        cout << "Server closed the connection" << endl;
+        cout << "Closing connection...";
+        break;
+        }
+
         cout << "Message sent by Server is: " << buf_2 << endl;
     }
 
