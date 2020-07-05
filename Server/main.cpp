@@ -27,36 +27,15 @@ int main(int argc, char *argv[])
     engine.load(url);*/
     //server test;
     vector<int> shuffled;
-    int i = 0 ;
-    while(shuffled.size()!= 64)
+    while(shuffled.size()!= 108)
     {
-        int numb = rand()%64 + 1;
+        int numb = rand()%108 + 1;
         if( find(shuffled.begin(), shuffled.end(), numb) == shuffled.end())
             shuffled.push_back(numb);
-        i++;
     }
-    for (unsigned i = 0; i < shuffled.size(); i++)
-    {
-            cout << shuffled.at(i) << ' ';
-    }
-    cout << endl << shuffled.size() << endl;
-    int arr[63] = {0};
     for(unsigned i = 0; i < shuffled.size(); i++)
     {
-        arr[shuffled.at(i)-1]++;
+        cout << shuffled.at(i) << " ";
     }
-    bool correct = true;
-    for (int i = 0; i < 64; i++)
-    {
-            if(arr[i] == 0)
-            {
-                correct = false;
-                break;
-            }
-    }
-    if(correct)
-        cout << "Correct" << endl;
-    else
-        cout << "Gone" << endl;
     return app.exec();
 }

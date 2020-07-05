@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         card.cpp \
+        list.cpp \
         main.cpp \
         node.cpp \
         server.cpp
@@ -30,5 +31,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     card.h \
+    list.h \
     node.h \
     server.h

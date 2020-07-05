@@ -1,9 +1,10 @@
 card attributes:
-	value
+	(( Abstract Class ))
 Numbered Card:
-	color( value )
+	color
+	value
 Special Card:
-	anything not needed
+	value
 Reverse:
 	color
 Draw:
