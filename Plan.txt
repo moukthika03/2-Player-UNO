@@ -23,14 +23,42 @@ wild:
 
 It is a two player UNO game
 
-we should linked lists to store the cards sequence and to keep track of all the cards that are present with a player
+we should Vectore to store the cards sequence and to keep track of all the cards that are present with a player
 
 The Server will generate a list of cards (shuffled)  and  give the alternate 7 or 13 cards to each player
 
 the cards are displayed according to the code they have
 
-to select the card player should press the nmber of the card in their list and then they start the play
+to select the card player should press the nmber of the card in their vector list and then they start the play
 
 if there is one card they should type uno
 
-when the number of cards in the list is 0 they win
+when the number of cards in the vector is 0 they win
+
+The deck consists of 108 cards of 4 numbered colors ( red, green, yellow, blue ), 4 wild cards and 4 draw four cards 
+
+red - 25
+
+green - 25
+
+blue - 25
+
+yellow - 25
+
+Each color consists of two pairs of 1 - 9, 1 '0' card, 2 skips , 2 draws and 2 revese cards
+
+1 to 25 is red
+
+26 to 50 is yellow
+
+51 to 75 is green 
+
+76 to 100 is blue
+
+101 to 104 is wild 
+
+105 to 108 is draw 4
+
+
+
+In each color first 10 is 0 - 9 next 9 is 1 - 9 next 2 are skip next 2 are reverse and the last two are draw 2

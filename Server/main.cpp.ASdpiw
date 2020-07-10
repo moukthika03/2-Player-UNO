@@ -27,7 +27,16 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);*/
     //server test;
-   Game game;
-    game.shuffle_cards();
+    vector<int> shuffled;
+    while(shuffled.size()!= 108)
+    {
+        int numb = rand()%108 + 1;
+        if( find(shuffled.begin(), shuffled.end(), numb) == shuffled.end())
+            shuffled.push_back(numb);
+    }
+    for(unsigned i = 0; i < shuffled.size(); i++)
+    {
+        cout << shuffled.at(i) << " ";
+    }
     return app.exec();
 }

@@ -19,9 +19,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         card.cpp \
-        list.cpp \
+        game.cpp \
         main.cpp \
-        node.cpp \
+        player.cpp \
         server.cpp
 
 # Default rules for deployment.
@@ -31,6 +31,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     card.h \
-    list.h \
-    node.h \
+    game.h \
+    player.h \
     server.h
