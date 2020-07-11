@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "card.h"
+#include "server.h"
 
 using namespace std;
 
@@ -14,11 +15,12 @@ class Game
 private:
     vector<int> card_list_client;
     vector<int> shuffled;
+    server host;
     int top_card;
     vector<Card*> card_list;
 public:
     void shuffle_and_distribute();
-    
+
 };
 
 #endif // GAME_H

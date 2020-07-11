@@ -5,13 +5,14 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QDebug>
+#include <string>
 
 class server : public QObject
 {
     Q_OBJECT
 public:
     explicit server(QObject *parent = 0);
-
+    void set_clinet_cards(std :: string);
 signals:
 
 public slots:

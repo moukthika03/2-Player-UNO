@@ -33,17 +33,12 @@ void Game :: shuffle_and_distribute()
         shuffled.erase(shuffled.begin());
     }
 
-    string client_cards;
+    cout << "\nshuffled size is " << shuffled.size() << endl;;
 
-    for (unsigned i = 0; i < 7; i++)
+    for(unsigned i = 0; i < shuffled.size(); i++)
     {
-        int number = card_list_client[i];
-        string sm_str = to_string(number);
-        client_cards += sm_str + " ";
+        cout << shuffled.at(i) << " ";
     }
 
-    client_cards.pop_back();
-
-    //cout << endl << client_cards;
-    host.set_clinet_cards(client_cards);
+    host.set_clinet_cards("10 21 108");
 }
