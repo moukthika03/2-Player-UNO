@@ -6,17 +6,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "card.h"
+
 using namespace std;
 
 class Game
 {
 private:
+    vector<int> card_list_client;
     vector<int> shuffled;
-    vector<int> discarded_pile;
     int top_card;
     vector<Card*> card_list;
 public:
-    void shuffle_cards();
+    void shuffle_and_distribute();
+    
 };
 
 #endif // GAME_H

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void Game :: shuffle_cards()
+void Game :: shuffle_and_distribute()
 {
     while(shuffled.size()!= 108)
     {

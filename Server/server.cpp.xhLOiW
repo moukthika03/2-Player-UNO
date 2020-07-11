@@ -19,7 +19,7 @@ server :: server(QObject *parent) : QObject(parent)
 
 void server :: newConnection()
 {
-    qDebug() << "Connected";
+    qDebug() <<  "Connected";
     // need to grab the socket
     QTcpSocket *socket = ser->nextPendingConnection();
     char buf[1024] = {0};

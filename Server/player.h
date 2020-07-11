@@ -15,9 +15,11 @@ class Card;
 class Player
 {
 private:
-    vector<Card*> card_list;
+    vector<int> card_list_server;
+
 public:
     Player();
+    friend class Game;
 };
 
 #endif // PLAYER_H
