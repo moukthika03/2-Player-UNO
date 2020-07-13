@@ -1,6 +1,6 @@
 #include "colorchange.h"
 
-colorChange::colorChange()
+colorChange::colorChange(int value) : Special(value)
 {
 
 }

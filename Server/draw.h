@@ -3,7 +3,7 @@
 
 #include "special.h"
 
-class Draw : public Special
+class Draw : public virtual Special
 {
 protected:
         int draw;

@@ -9,6 +9,7 @@ protected:
     char color;
 public:
     Reverse(int, char);
+    void play();
 };
 
 #endif // REVERSE_H

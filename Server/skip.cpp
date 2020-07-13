@@ -1,6 +1,6 @@
 #include "skip.h"
 
-Skip::Skip()
+Skip::Skip(int value, char color) : Special(value)
 {
-
+    this->color = color;
 }

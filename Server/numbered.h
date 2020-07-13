@@ -10,6 +10,7 @@ protected:
     int value;
 public:
     Numbered(int, char);
+    void play();
 };
 
 #endif // NUMBERED_H

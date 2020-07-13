@@ -1,11 +1,14 @@
 #ifndef COLORCHANGE_H
 #define COLORCHANGE_H
 
+#include "special.h"
 
-class colorChange
+class colorChange : public virtual Special
 {
+protected:
+
 public:
-    colorChange();
+    colorChange(int);
 };
 
 #endif // COLORCHANGE_H
