@@ -1,0 +1,11 @@
+#ifndef NUMBERED_H
+#define NUMBERED_H
+
+
+class Numbered
+{
+public:
+    Numbered();
+};
+
+#endif // NUMBERED_H

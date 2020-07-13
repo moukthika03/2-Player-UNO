@@ -19,10 +19,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         card.cpp \
+        colorchange.cpp \
+        draw.cpp \
+        drawtwo.cpp \
         game.cpp \
         main.cpp \
+        numbered.cpp \
         player.cpp \
-        server.cpp
+        reverse.cpp \
+        server.cpp \
+        skip.cpp \
+        special.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,6 +38,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     card.h \
+    colorchange.h \
+    draw.h \
+    drawtwo.h \
     game.h \
+    numbered.h \
     player.h \
-    server.h
+    reverse.h \
+    server.h \
+    skip.h \
+    special.h

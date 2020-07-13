@@ -10,7 +10,7 @@ Reverse:
 Draw:
 	int for number of cards to be drawn (which is value)
 Color change:
-	a string for which color
+	a character for which color
 Skip:
 	color ( value )
 Draw two:
@@ -18,12 +18,12 @@ Draw two:
 Draw four:
 	anything not needed
 wild:
-	anything not needed		 
+	anything not needed
 
 
 It is a two player UNO game
 
-we should Vectore to store the cards sequence and to keep track of all the cards that are present with a player
+we should Vector to store the cards sequence and to keep track of all the cards that are present with a player
 
 The Server will generate a list of cards (shuffled)  and  give the alternate 7 or 13 cards to each player
 
@@ -35,7 +35,7 @@ if there is one card they should type uno
 
 when the number of cards in the vector is 0 they win
 
-The deck consists of 108 cards of 4 numbered colors ( red, green, yellow, blue ), 4 wild cards and 4 draw four cards 
+The deck consists of 108 cards of 4 numbered colors ( red, green, yellow, blue ), 4 wild cards and 4 draw four cards
 
 red - 25
 
@@ -51,11 +51,11 @@ Each color consists of two pairs of 1 - 9, 1 '0' card, 2 skips , 2 draws and 2 r
 
 26 to 50 is yellow
 
-51 to 75 is green 
+51 to 75 is green
 
 76 to 100 is blue
 
-101 to 104 is wild 
+101 to 104 is wild
 
 105 to 108 is draw 4
 

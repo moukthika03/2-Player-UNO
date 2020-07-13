@@ -1,0 +1,10 @@
+card.o
+draw.o
+game.o
+main.o
+numbered.o
+player.o
+reverse.o
+server.o
+special.o
+moc_server.o
