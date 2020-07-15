@@ -1,10 +1,15 @@
 card.o
+colorchange.o
 draw.o
+drawfour.o
+drawtwo.o
 game.o
 main.o
 numbered.o
 player.o
 reverse.o
 server.o
+skip.o
 special.o
+wild.o
 moc_server.o

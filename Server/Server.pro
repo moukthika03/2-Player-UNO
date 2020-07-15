@@ -21,6 +21,7 @@ SOURCES += \
         card.cpp \
         colorchange.cpp \
         draw.cpp \
+        drawfour.cpp \
         drawtwo.cpp \
         game.cpp \
         main.cpp \
@@ -29,7 +30,8 @@ SOURCES += \
         reverse.cpp \
         server.cpp \
         skip.cpp \
-        special.cpp
+        special.cpp \
+        wild.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -40,6 +42,7 @@ HEADERS += \
     card.h \
     colorchange.h \
     draw.h \
+    drawfour.h \
     drawtwo.h \
     game.h \
     numbered.h \
@@ -47,4 +50,5 @@ HEADERS += \
     reverse.h \
     server.h \
     skip.h \
-    special.h
+    special.h \
+    wild.h
