@@ -23,9 +23,6 @@ void server :: set_clinet_cards(string str_1)
 {
     int n = str_1.length();
     strcpy(client_cards, str_1.c_str());
-
-        for (int i = 0; i < n; i++)
-            cout << client_cards[i];
 }
 
 void server :: newConnection()
@@ -33,11 +30,11 @@ void server :: newConnection()
     qDebug() << "Connected";
     // need to grab the socket
     QTcpSocket *socket = ser->nextPendingConnection();
-    char buf[1024] = {0};
+   // char buf[1024] = {0};
     socket->write(client_cards);
     socket->flush();
     socket->waitForBytesWritten(30000);
-    while(buf[0] != '!')
+    /*while(buf[0] != '!')
     {
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
@@ -56,7 +53,7 @@ void server :: newConnection()
         socket->write(buf);
         socket->flush();
         socket->waitForBytesWritten(30000);
-    }
+    }*/
 
 
     socket->close();

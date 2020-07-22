@@ -22,7 +22,7 @@ void client::readyRead()
     //str = QTextCodec::codecForMib(1015)->toUnicode(socket->readLine());
     socket->read(buf, sizeof(buf));
     cout << buf;
-    while(buf[0] != '!')
+    /*while(buf[0] != '!')
     {
         char buf_2[1024] = {0};
         cout << "\n\nEnter the message: ";
@@ -42,7 +42,7 @@ void client::readyRead()
         }
 
         cout << "Message sent by Server is: " << buf_2 << endl;
-    }
+    }*/
 
     qDebug("\nCompleted");
 

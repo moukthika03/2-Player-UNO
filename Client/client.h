@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include "game.h"
 
 class client: public QObject
 {
@@ -17,6 +18,7 @@ public slots:
 
 private:
     QTcpSocket* socket;
+    Game game;
 };
 
 #endif // CLIENT_H
