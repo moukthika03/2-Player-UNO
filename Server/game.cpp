@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "drawfour.h"
 #include "wild.h"
 #include "numbered.h"
@@ -57,6 +58,10 @@ Game :: Game ()
         }
     }
 }
+
+
+using namespace std;
+
 
 string Game :: shuffle_and_distribute()
 {
