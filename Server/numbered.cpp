@@ -8,5 +8,5 @@ Numbered::Numbered(int value, char colour)
 
 void Numbered :: play()
 {
-
+    return;
 }

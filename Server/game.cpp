@@ -47,7 +47,6 @@ string Game :: shuffle_and_distribute()
    top_card = shuffled[0];
    shuffled.erase(shuffled.begin());
     cout << "Top card is " << top_card << endl;
-    displayCards();
     return client_cards;
 }
 
@@ -64,7 +63,7 @@ string Game:: getColor(int num)
     else
         return "Special";
 }
-string Game::getNumber(int num)
+string  Game:: getNumber(int num)
 {
     if(num >= 105)
         return "Draw 4";
@@ -72,13 +71,13 @@ string Game::getNumber(int num)
         return "Wild";
     else
     {
-        if((num % 25) <= 10)
+        if((num % 25) <= 10 && num % 25 != 0)
             return to_string((num%25) - 1);
-        else if((num % 25) <= 19)
+        else if((num % 25) <= 19 && num % 25 != 0)
             return to_string((num%25) - 10);
-        else if((num%25) <= 21)
+        else if((num%25) <= 21 && num % 25 != 0)
             return "Skip";
-        else if((num%25) <= 23)
+        else if((num%25) <= 23 && num % 25 != 0)
             return "Reverse";
         else
             return "Draw 2";

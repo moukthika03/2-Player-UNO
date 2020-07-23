@@ -34,6 +34,23 @@ void client::readyRead()
     cout << buf;
     string s = convertToString(buf);
     game.setFirstCards(s);
+    int selected;
+    while(true)
+    {
+        socket->waitForReadyRead();
+        socket->read(buf, sizeof(buf));
+        cout << "\nThe topcard is now: " << buf;
+        cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
+        cin >> selected;
+        string str =  to_string(selected);
+        strcpy(buf, str.c_str());
+        socket->write(buf);
+        socket->flush();
+        socket->waitForBytesWritten(30000);
+
+        break;
+    }
+
     /*while(buf[0] != '!')
     {
         char buf_2[1024] = {0};
@@ -48,14 +65,14 @@ void client::readyRead()
         socket->read(buf_2, sizeof(buf_2));
         if(!strcmp(buf, "end") || !strcmp(buf, "End") || !strcmp(buf, "END"))
         {
-        cout << "Server closed the connection" << endl;
-        cout << "Closing connection...";
-        break;
+            cout << "Server closed the connection" << endl;
+            cout << "Closing connection...";
+            break;
         }
 
         cout << "Message sent by Server is: " << buf_2 << endl;
     }*/
-
+    socket->close();
     qDebug("\nCompleted");
 
 }

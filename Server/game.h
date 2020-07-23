@@ -24,7 +24,7 @@ public:
     bool verify(int);
     void drawCards();
 
-    friend class Server;
+    friend class server;
 };
 
 #endif // GAME_H

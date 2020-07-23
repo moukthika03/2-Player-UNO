@@ -24,16 +24,34 @@ server :: server(QObject *parent) : QObject(parent)
 
 void server :: newConnection()
 {
-    qDebug() << "Connected";
-    // need to grab the socket
+    qDebug() << "Connected to the Client";
     string client_cards_string = game.shuffle_and_distribute();
     QTcpSocket *socket = ser->nextPendingConnection();
-   // char buf[1024] = {0};
+    char buf[1024] = {0};
     strcpy(client_cards, client_cards_string.c_str());
     socket->write(client_cards);
     socket->flush();
     socket->waitForBytesWritten(30000);
-    /*while(buf[0] != '!')
+    int selected;
+    while(true)
+    {
+        game.displayCards();
+        cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
+        cin >> selected;
+
+        game.card_list[game.player.card_list[selected]-1]->play();
+
+        string str =  to_string(game.top_card);
+        strcpy(buf, str.c_str());
+        socket->write(buf);
+        socket->flush();
+        socket->waitForBytesWritten(30000);
+
+        socket->waitForReadyRead();
+        socket->read(buf, sizeof(buf));
+        break;
+    }
+    /*while(true)
     {
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
