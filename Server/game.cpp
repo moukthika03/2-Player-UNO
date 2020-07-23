@@ -12,7 +12,7 @@
 #include <drawtwo.h>
 #include <skip.h>
 using namespace std;
-
+//small change
 Game :: Game ()
 {
     int i;
