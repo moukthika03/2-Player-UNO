@@ -12,6 +12,8 @@ public:
     Game();
     void setFirstCards (std :: string);
     void split();
+    string getColor(int);
+    string getNumber(int);
 };
 
 #endif // GAME_H
