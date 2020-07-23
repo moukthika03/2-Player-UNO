@@ -14,6 +14,7 @@ public:
     void split();
     string getColor(int);
     string getNumber(int);
+    void displayCards();
 };
 
 #endif // GAME_H

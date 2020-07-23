@@ -18,7 +18,6 @@ void Game :: setFirstCards(string first_cards)
 void Game :: split()
 {
     int n = first_cards.length();
-    cout << "\nLength of first cards is " << n << endl;
     char char_array[n + 1];
 
     strcpy(char_array, first_cards.c_str());
@@ -32,11 +31,10 @@ void Game :: split()
     for (int i = 0; i < n; i++)
             if (char_array[i] == ' ')
                 spaces++;
-    cout << "Number of spaces are " << spaces << endl;
+
     while (token != NULL)
     {
-       cout << "\ninside\n";
-       cout << "token is " << token << endl;
+
        int num = stoi(token);
        player.card_list.push_back(num);
        token = strtok(NULL, " ");
@@ -45,6 +43,7 @@ void Game :: split()
     cout << "\nCard list is " << endl;
     for (unsigned i = 0; i < player.card_list.size(); i++)
             cout << player.card_list[i] << " ";
+    displayCards();
 }
 string Game:: getColor(int num)
 {
@@ -77,5 +76,15 @@ string Game::getNumber(int num)
             return "Reverse";
         else
             return "Draw 2";
+    }
+}
+
+void Game::displayCards()
+{
+    cout << "\nYou have the cards:" << endl;
+    for (unsigned i = 0; i < player.card_list.size(); i++)
+    {
+        cout << endl << i+1 << ". ";
+        cout << getColor(player.card_list[i]) << " " << getNumber(player.card_list[i]) << " " ;
     }
 }
