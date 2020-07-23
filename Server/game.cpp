@@ -5,57 +5,9 @@
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
-#include <drawfour.h>
-#include <wild.h>
-#include <numbered.h>
-#include <reverse.h>
-#include <drawtwo.h>
-#include <skip.h>
+
 using namespace std;
-//small change
-Game :: Game ()
-{
-    int i;
-    for(i = 1; i <= 108; i++ )
-    {
-        if(i >= 105)
-            card_list[i] = new drawFour(i, 4);
-        else if(i >= 101)
-            card_list[i] = new Wild(i);
-        else
-        {
-            char c;
-            if(i <= 25)
-                c = 'r';
-            else if(i <= 50)
-                c = 'g';
-            else if(i <= 75)
-                c = 'b';
-            else
-               c = 'y';
-            if((i % 25) <= 10 && i % 25 !=0)
-            {
-                card_list[i] = new Numbered(i%25-1, c);
-            }
-            else if((i % 25) <= 19 && i % 25 != 0)
-            {
-                card_list[i] = new Numbered(i%25-10, c);
-            }
-            else if((i%25) <= 21 && i % 25 != 0)
-            {
-                card_list[i] = new Skip(i ,c);
-            }
-            else if((i%25) <= 21 && i % 25 != 0)
-            {
-                card_list[i] = new Reverse(i, c);
-            }
-            else
-            {
-                card_list[i] = new  drawTwo(2, i);
-            }
-        }
-    }
-}
+
 string Game :: shuffle_and_distribute()
 {
     while(shuffled.size()!= 108)
