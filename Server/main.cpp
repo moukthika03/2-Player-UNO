@@ -19,8 +19,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+    server ser;
 
-   Game game;
-   game.shuffle_and_distribute();
    return app.exec();
 }

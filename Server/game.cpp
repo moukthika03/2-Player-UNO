@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void Game :: shuffle_and_distribute()
+string Game :: shuffle_and_distribute()
 {
     while(shuffled.size()!= 108)
     {
@@ -45,13 +45,11 @@ void Game :: shuffle_and_distribute()
     client_cards.pop_back();
 
     //cout << endl << client_cards;
-   host.set_clinet_cards(client_cards);
+
 
    top_card = shuffled[0];
    shuffled.erase(shuffled.begin());
     cout << "Top card is " << top_card << endl;
-    for(unsigned i = 0; i < shuffled.size(); i++)
-    {
-        cout << shuffled.at(i) << " ";
-    }
+
+    return client_cards;
 }

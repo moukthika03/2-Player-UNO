@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 
+
 using namespace std;
 
 server :: server(QObject *parent) : QObject(parent)
@@ -19,18 +20,16 @@ server :: server(QObject *parent) : QObject(parent)
    }
 }
 
-void server :: set_clinet_cards(string str_1)
-{
-    int n = str_1.length();
-    strcpy(client_cards, str_1.c_str());
-}
+
 
 void server :: newConnection()
 {
     qDebug() << "Connected";
     // need to grab the socket
+    string client_cards_string = game.shuffle_and_distribute();
     QTcpSocket *socket = ser->nextPendingConnection();
    // char buf[1024] = {0};
+    strcpy(client_cards, client_cards_string.c_str());
     socket->write(client_cards);
     socket->flush();
     socket->waitForBytesWritten(30000);

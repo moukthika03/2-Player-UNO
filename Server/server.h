@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <string>
+#include "game.h"
 
 class server : public QObject
 {
@@ -21,6 +22,7 @@ public slots:
 private:
     QTcpServer* ser;
     char client_cards[1024];
+    Game game;
 };
 
 #endif //SERVER_H
