@@ -13,7 +13,6 @@ class Game
 private:
     vector<int> card_list_client;
     vector<int> shuffled;
-
     int top_card;
     vector<Card*> card_list;
     Player player;
@@ -23,6 +22,8 @@ public:
     string getNumber(int);
     void displayCards();
     bool verify(int);
+    void drawCards();
+
     friend class Server;
 };
 

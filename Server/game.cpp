@@ -110,3 +110,9 @@ bool Game::verify(int chosen)
     }
     return false;
 }
+
+void Game :: drawCards()
+{
+    player.card_list.push_back(shuffled[0]);
+    shuffled.erase(shuffled.begin());
+}

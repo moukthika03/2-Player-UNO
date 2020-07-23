@@ -15,6 +15,7 @@ public:
     string getColor(int);
     string getNumber(int);
     void displayCards();
+
 };
 
 #endif // GAME_H
