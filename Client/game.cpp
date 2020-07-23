@@ -46,3 +46,17 @@ void Game :: split()
     for (unsigned i = 0; i < player.card_list.size(); i++)
             cout << player.card_list[i] << " ";
 }
+
+string Game :: getColor(int num)
+{
+    if (num <= 25)
+        return "Red";
+    else if (num <= 50)
+        return "Yellow";
+    else if(num <= 75)
+        return "Green";
+    else if(num <= 100)
+        return "Blue";
+    else
+        return "Special";
+}
