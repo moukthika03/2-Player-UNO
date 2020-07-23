@@ -1,20 +1,19 @@
+#include "game.h"
+#include "card.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
-#include "drawfour.h"
-#include "wild.h"
-#include "numbered.h"
-#include "reverse.h"
-#include "drawtwo.h"
-#include "skip.h"
-#include "game.h"
-#include "card.h"
-
+#include <drawfour.h>
+#include <wild.h>
+#include <numbered.h>
+#include <reverse.h>
+#include <drawtwo.h>
+#include <skip.h>
 using namespace std;
 
-Game::Game()
+Game :: Game ()
 {
     int i;
     for(i = 1; i <= 108; i++ )
@@ -57,7 +56,6 @@ Game::Game()
         }
     }
 }
-
 string Game :: shuffle_and_distribute()
 {
     while(shuffled.size()!= 108)
