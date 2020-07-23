@@ -16,9 +16,13 @@ private:
 
     int top_card;
     vector<Card*> card_list;
-    Player server_player;
+    Player player;
 public:
     string shuffle_and_distribute();
+    string getColor(int);
+    string getNumber(int);
+    void displayCards();
+
     friend class Server;
 };
 
