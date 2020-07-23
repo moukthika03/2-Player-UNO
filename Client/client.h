@@ -10,7 +10,7 @@ class client: public QObject
     Q_OBJECT
 public:
     explicit client(QObject *parent = 0);
-
+    string convertToString(char*);
 signals:
 
 public slots:

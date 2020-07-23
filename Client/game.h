@@ -6,7 +6,7 @@
 class Game
 {
 private:
-    Player  client_player;
+    Player  player;
     std :: string first_cards;
 public:
     Game();

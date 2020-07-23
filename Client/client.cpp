@@ -1,4 +1,4 @@
-
+#include <bits/stdc++.h>
 #include "client.h"
 #include <QDebug>
 #include <iostream>
@@ -13,7 +13,17 @@ client::client(QObject* parent):QObject(parent)
     if (socket->waitForConnected(30000))
         qDebug("Connected!");
 }
-
+string client :: convertToString(char* a)
+{
+    int i = 0;
+    string s = "";
+    while(a[i] != '\0') {
+        s = s + a[i];
+        i++;
+    }
+    cout << "\nS is " << s << endl;
+    return s;
+}
 void client::readyRead()
 {
     qDebug() << "Reading\n";
@@ -22,6 +32,8 @@ void client::readyRead()
     //str = QTextCodec::codecForMib(1015)->toUnicode(socket->readLine());
     socket->read(buf, sizeof(buf));
     cout << buf;
+    string s = convertToString(buf);
+    game.setFirstCards(s);
     /*while(buf[0] != '!')
     {
         char buf_2[1024] = {0};
