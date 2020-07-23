@@ -1,12 +1,19 @@
-#include "game.h"
-#include "card.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
+#include "game.h"
+#include "card.h"
+#include "wild.h"
+#include "drawtwo.h"
+#include "drawfour.h"
+#include "numbered.h"
+#include "skip.h"
+#include "reverse.h"
 
 using namespace std;
+
 
 string Game :: shuffle_and_distribute()
 {
@@ -46,7 +53,6 @@ string Game :: shuffle_and_distribute()
 
    top_card = shuffled[0];
    shuffled.erase(shuffled.begin());
-    cout << "Top card is " << top_card << endl;
     return client_cards;
 }
 
@@ -86,12 +92,14 @@ string  Game:: getNumber(int num)
 
 void Game::displayCards()
 {
+    cout << "The TOP CARD is " << getColor(top_card) << " " << getNumber(top_card) << endl;
     cout << "\nYou have the cards:" << endl;
     for (unsigned i = 0; i < player.card_list.size(); i++)
     {
         cout << endl << i+1 << ". ";
         cout << getColor(player.card_list[i]) << " " << getNumber(player.card_list[i]) << " " ;
     }
+
 }
 
 
