@@ -6,7 +6,7 @@
 #include "player.h"
 
 using namespace std;
-//small change
+
 class Game
 {
 private:
