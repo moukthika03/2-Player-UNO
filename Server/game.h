@@ -17,7 +17,6 @@ private:
     vector<Card*> card_list;
     Player player;
 public:
-    Game();
     string shuffle_and_distribute();
     string getColor(int);
     string getNumber(int);
