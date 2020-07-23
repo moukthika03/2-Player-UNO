@@ -46,36 +46,3 @@ void Game :: split()
     for (unsigned i = 0; i < player.card_list.size(); i++)
             cout << player.card_list[i] << " ";
 }
-string Game:: getColor(int num)
-{
-    if (num <= 25)
-        return "Red";
-    else if (num <= 50)
-        return "Yellow";
-    else if(num <= 75)
-        return "Green";
-    else if(num <= 100)
-        return "Blue";
-    else
-        return "Special";
-}
-string Game::getNumber(int num)
-{
-    if(num >= 105)
-        return "Draw 4";
-    else if(num >= 101)
-        return "Wild";
-    else
-    {
-        if((num % 25) <= 10)
-            return to_string((num%25) - 1);
-        else if((num % 25) <= 19)
-            return to_string((num%25) - 10);
-        else if((num%25) <= 21)
-            return "Skip";
-        else if((num%25) <= 23)
-            return "Reverse";
-        else
-            return "Draw 2";
-    }
-}
