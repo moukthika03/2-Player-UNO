@@ -7,6 +7,7 @@ class Wild : public colorChange
 {
 public:
     Wild(int);
+    void play();
 };
 
 #endif // WILD_H
