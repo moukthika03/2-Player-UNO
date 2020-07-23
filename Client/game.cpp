@@ -15,6 +15,21 @@ void Game :: setFirstCards(string first_cards)
     split();
 }
 
+bool Game::verify(int chosen)
+{
+    if(chosen % 25 == top_card % 25)
+    {
+        return true;
+    }
+    int i = 1, j = 25;
+    for(; i < 75; i += 25, j += 25)
+    {
+        if((i <= chosen && chosen <= j) && (i <= top_card && top_card <= j) )
+            return true;
+    }
+    return false;
+}
+
 void Game :: split()
 {
     int n = first_cards.length();

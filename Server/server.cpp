@@ -37,7 +37,14 @@ void server :: newConnection()
     {
         game.displayCards();
         cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
-        cin >> selected;
+        while(true)
+        {
+            cin >> selected;
+            if(game.verify(game.player.card_list[selected]))
+                break;
+            else
+                cout << "Please enter a valid input";
+        }
 
         game.card_list[game.player.card_list[selected]-1]->play();
 

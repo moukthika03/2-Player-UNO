@@ -8,6 +8,7 @@ class Game
 private:
     Player  player;
     std :: string first_cards;
+    int top_card;
 public:
     Game();
     void setFirstCards (std :: string);
@@ -15,7 +16,8 @@ public:
     string getColor(int);
     string getNumber(int);
     void displayCards();
-
+    bool verify(int);
+    friend class client;
 };
 
 #endif // GAME_H

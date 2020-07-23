@@ -39,9 +39,19 @@ void client::readyRead()
     {
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
-        cout << "\nThe topcard is now: " << buf;
+
+        string top = convertToString(buf);
+        game.top_card = stoi(top);
+        cout << "\nThe topcard is now: " << game.top_card;
         cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
-        cin >> selected;
+        while(true)
+        {
+            cin >> selected;
+            if(game.verify(game.player.card_list[selected]))
+                break;
+            else
+                cout << "Please enter a valid input";
+        }
         string str =  to_string(selected);
         strcpy(buf, str.c_str());
         socket->write(buf);

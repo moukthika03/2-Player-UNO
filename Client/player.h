@@ -12,6 +12,7 @@ private:
 public:
     Player();
     friend class Game;
+    friend class client;
 };
 
 #endif // PLAYER_H
