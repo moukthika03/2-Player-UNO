@@ -13,8 +13,8 @@
 #include "card.h"
 
 using namespace std;
-
-Game::Game()
+//small change
+Game :: Game ()
 {
     int i;
     for(i = 1; i <= 108; i++ )
