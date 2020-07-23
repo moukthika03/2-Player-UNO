@@ -22,7 +22,7 @@ public:
     string getColor(int);
     string getNumber(int);
     void displayCards();
-
+    bool verify(int);
     friend class Server;
 };
 

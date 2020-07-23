@@ -16,10 +16,7 @@ string Game :: shuffle_and_distribute()
         if( find(shuffled.begin(), shuffled.end(), numb) == shuffled.end())
             shuffled.push_back(numb);
     }
-    for(unsigned i = 0; i < shuffled.size(); i++)
-    {
-        cout << shuffled.at(i) << " ";
-    }
+
     cout << endl;
     for (unsigned i = 0; i < 7; i++)
     {
@@ -50,7 +47,7 @@ string Game :: shuffle_and_distribute()
    top_card = shuffled[0];
    shuffled.erase(shuffled.begin());
     cout << "Top card is " << top_card << endl;
-
+    displayCards();
     return client_cards;
 }
 
@@ -98,3 +95,18 @@ void Game::displayCards()
     }
 }
 
+
+bool Game::verify(int chosen)
+{
+    if(chosen % 25 == top_card % 25)
+    {
+        return true;
+    }
+    int i = 1, j = 25;
+    for(; i < 75; i += 25, j += 25)
+    {
+        if((i <= chosen && chosen <= j) && (i <= top_card && top_card <= j) )
+            return true;
+    }
+    return false;
+}

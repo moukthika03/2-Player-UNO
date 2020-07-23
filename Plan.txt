@@ -45,7 +45,7 @@ blue - 25
 
 yellow - 25
 
-Each color consists of two pairs of 1 - 9, 1 '0' card, 2 skips , 2 draws and 2 revese cards
+Each color consists of two pairs of 1 - 9, 1 '0' card, 2 skips , 2 draws and 2 reverse cards
 
 1 to 25 is red
 
