@@ -13,6 +13,7 @@ string Numbered :: play(Game &game, int choice, char ch)
 {
     if(ch == 's')
     {
+        game.top_card = choice;
         vector<int>::iterator it;
         it=find (game.player.card_list.begin(), game.player.card_list.end(), choice);
         int n = it - game.player.card_list.begin();  //number from 0
@@ -22,8 +23,9 @@ string Numbered :: play(Game &game, int choice, char ch)
             std::cout << ' ' << game.player.card_list[i];*/
         //returns the top card only
     }
-    game.shuffled.push_back(game.top_card);
-    random_shuffle(game.shuffled.begin(), game.shuffled.end());
-    game.top_card = choice;
+    else
+    {
+        game.top_card = choice;
+    }
     return to_string(game.top_card);
 }
