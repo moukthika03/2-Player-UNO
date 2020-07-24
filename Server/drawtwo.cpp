@@ -27,5 +27,7 @@ string drawTwo :: play(Game &game, int choice, char ch)
     game.shuffled.push_back(game.top_card);
     random_shuffle(game.shuffled.begin(), game.shuffled.end());
     game.top_card = choice;
+    c.append(" ");
+    c.append(to_string(choice));
     return c;
 }
