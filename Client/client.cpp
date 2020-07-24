@@ -104,10 +104,15 @@ void client::readyRead()
 
             }
             else if(game.player.card_list[selected-1] % 25 == 20 || game.player.card_list[selected-1] % 25 == 21 || game.player.card_list[selected-1]% 25 == 24 || game.player.card_list[selected-1] % 25 == 25 )
+            {
+                game.player.card_list.erase(game.player.card_list.begin()+ selected-1);
                 goto l1;
+            }
+
             else if(game.player.card_list[selected-1] % 25 == 22 || game.player.card_list[selected-1] % 25 == 23)
             {
                 string str =  to_string(game.player.card_list[selected-1]);
+                game.player.card_list.erase(game.player.card_list.begin()+ selected-1);
                 strcpy(buf, str.c_str());
                 socket->write(buf);
                 socket->flush();
@@ -117,6 +122,7 @@ void client::readyRead()
             else
             {
                 string str =  to_string(game.player.card_list[selected-1]);
+                game.player.card_list.erase(game.player.card_list.begin()+ selected-1);
                 strcpy(buf, str.c_str());
                 socket->write(buf);
                 socket->flush();
