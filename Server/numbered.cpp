@@ -6,7 +6,7 @@ Numbered::Numbered(int value, char colour)
     this->colour = colour;
 }
 
-void Numbered :: play()
+string Numbered :: play(char ch)
 {
-    return;
+    return "Check";
 }

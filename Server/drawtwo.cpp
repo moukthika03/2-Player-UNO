@@ -5,7 +5,7 @@ drawTwo::drawTwo(int draw, int value) : Special(value), Draw(draw, value)
 
 }
 
-void drawTwo :: play()
+string drawTwo :: play(char ch)
 {
-
+    return "Check";
 }
