@@ -20,6 +20,8 @@ string Skip :: play(Game &game, int choice, char ch)
             std::cout << ' ' << game.player.card_list[i];*/
         //returns the top card only
     }
+    game.shuffled.push_back(game.top_card);
+    random_shuffle(game.shuffled.begin(), game.shuffled.end());
     game.top_card = choice;
     return "Play again";
 }
