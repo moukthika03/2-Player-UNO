@@ -21,6 +21,12 @@ public:
     Player();
     friend class Game;
     friend class server;
+    friend class Numbered;
+    friend class drawFour;
+    friend class drawTwo;
+    friend class Reverse;
+    friend class Skip;
+    friend class Wild;
 };
 
 #endif // PLAYER_H

@@ -25,6 +25,12 @@ public:
     bool verify(int);
     void drawCards();
 
+    friend class Numbered;
+    friend class drawFour;
+    friend class drawTwo;
+    friend class Reverse;
+    friend class Skip;
+    friend class Wild;
     friend class server;
 };
 
