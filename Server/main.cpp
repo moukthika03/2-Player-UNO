@@ -19,8 +19,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    cout << "inside";
-    server game_server;
-    cout << "inside";
+    server ser;
+
    return app.exec();
 }

@@ -1,20 +1,63 @@
+#include "game.h"
+#include "card.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
-#include "game.h"
-#include "card.h"
-#include "wild.h"
-#include "drawtwo.h"
-#include "drawfour.h"
-#include "numbered.h"
-#include "skip.h"
-#include "reverse.h"
-
+#include <drawfour.h>
+#include <wild.h>
+#include <numbered.h>
+#include <reverse.h>
+#include <drawtwo.h>
+#include <skip.h>
 using namespace std;
-
-
+//small change
+Game :: Game ()
+{
+    Card* temp;
+    int i;
+    for(i = 1; i <= 108; i++)
+    {
+        if(i >= 105)
+            temp =  new drawFour(i, 4);
+        else if(i >= 101)
+            temp = new Wild(i);
+        else
+        {
+            char c;
+            if(i <= 25)
+                c = 'r';
+            else if(i <= 50)
+                c = 'g';
+            else if(i <= 75)
+                c = 'b';
+            else
+               c = 'y';
+            if((i % 25) <= 10 && i % 25 !=0)
+            {
+                temp = new Numbered(i%25-1, c);
+            }
+            else if((i % 25) <= 19 && i % 25 != 0)
+            {
+                temp = new Numbered(i%25-10, c);
+            }
+            else if((i%25) <= 21 && i % 25 != 0)
+            {
+                temp = new Skip(i ,c);
+            }
+            else if((i%25) <= 21 && i % 25 != 0)
+            {
+                temp = new Reverse(i, c);
+            }
+            else
+            {
+                temp = new drawTwo(2, i);
+            }
+            card_list.push_back(temp);
+        }
+    }
+}
 string Game :: shuffle_and_distribute()
 {
     while(shuffled.size()!= 108)
@@ -53,6 +96,7 @@ string Game :: shuffle_and_distribute()
 
    top_card = shuffled[0];
    shuffled.erase(shuffled.begin());
+    cout << "Top card is " << top_card << endl;
     return client_cards;
 }
 
@@ -92,22 +136,17 @@ string  Game:: getNumber(int num)
 
 void Game::displayCards()
 {
-    cout << "The TOP CARD is " << getColor(top_card) << " " << getNumber(top_card) << endl;
     cout << "\nYou have the cards:" << endl;
     for (unsigned i = 0; i < player.card_list.size(); i++)
     {
         cout << endl << i+1 << ". ";
         cout << getColor(player.card_list[i]) << " " << getNumber(player.card_list[i]) << " " ;
     }
-
 }
 
 
 bool Game::verify(int chosen)
 {
-    cout << "top_card is " << top_card << endl;
-    cout << "\nchosen is " << chosen << endl;
-
     if(chosen % 25 == top_card % 25)
     {
         return true;
