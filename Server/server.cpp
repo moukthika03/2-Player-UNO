@@ -7,6 +7,7 @@ using namespace std;
 
 server :: server(QObject *parent) : QObject(parent)
 {
+    cout << "\ninside_server\n";
     ser = new QTcpServer(this);
    // whenever a user connects, it will emit signal
    connect(ser, SIGNAL(newConnection()),this, SLOT(newConnection()));
@@ -43,7 +44,7 @@ void server :: newConnection()
             if(game.verify(game.player.card_list[selected]))
                 break;
             else
-                cout << "Please enter a valid input";
+                cout << "Please enter a valid input: ";
         }
 
         game.card_list[game.player.card_list[selected]-1]->play();

@@ -105,6 +105,9 @@ void Game::displayCards()
 
 bool Game::verify(int chosen)
 {
+    cout << "top_card is " << top_card << endl;
+    cout << "\nchosen is " << chosen << endl;
+
     if(chosen % 25 == top_card % 25)
     {
         return true;
