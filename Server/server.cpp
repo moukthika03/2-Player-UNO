@@ -115,8 +115,12 @@ void server :: newConnection()
         }
         else
         {
-            int val = game.player.card_list[selected - 1];
-            card_list[game.player.card_list[selected]-1]->play(game, val);
+           int val = game.player.card_list[selected - 1];
+           string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
+           strcpy(buf, str.c_str());
+           socket->write(buf);
+           socket->flush();
+           socket->waitForBytesWritten(30000);
         }
 
 

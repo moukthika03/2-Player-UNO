@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include "client.h"
-#include "game.h"`
+#include "game.h"
 #include <QDebug>
 #include <iostream>
 #include <QTextCodec>
@@ -40,50 +40,37 @@ void client::readyRead()
     {
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
-
-        string top = convertToString(buf);
-        game.top_card = stoi(top);
-        cout << "\nThe topcard is now: " << game.top_card;
-        cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
-        while(true)
+        char *token = strtok(buf, " ");
+        if(strcmp(token, "1") == 0)
         {
-            cin >> selected;
-            selected--;
-            if(game.verify(game.player.card_list[selected]))
-                break;
-            else
-                cout << "Please enter a valid input";
+            token = strtok(NULL, " ");
+            game.top_card = stoi(convertToString(token));
+            game.displayCards();
+            cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
+            while(true)
+            {
+                cin >> selected;
+                selected--;
+                if(game.verify(game.player.card_list[selected]))
+                    break;
+                else
+                    cout << "Please enter a valid input";
+            }
+            string str =  to_string(game.player.card_list[selected-1]);
+            strcpy(buf, str.c_str());
+            socket->write(buf);
+            socket->flush();
+            socket->waitForBytesWritten(30000);
         }
-        string str =  to_string(selected);
-        strcpy(buf, str.c_str());
-        socket->write(buf);
-        socket->flush();
-        socket->waitForBytesWritten(30000);
+        /*string top = convertToString(buf);
+        game.top_card = stoi(top);*/
+
+
 
         break;
     }
 
-    /*while(buf[0] != '!')
-    {
-        char buf_2[1024] = {0};
-        cout << "\n\nEnter the message: ";
-        cin >> buf_2;
-        cin.sync();
-        socket->write(buf_2);
-        socket->flush();
-        socket->waitForBytesWritten(30000);
 
-        socket->waitForReadyRead();
-        socket->read(buf_2, sizeof(buf_2));
-        if(!strcmp(buf, "end") || !strcmp(buf, "End") || !strcmp(buf, "END"))
-        {
-            cout << "Server closed the connection" << endl;
-            cout << "Closing connection...";
-            break;
-        }
-
-        cout << "Message sent by Server is: " << buf_2 << endl;
-    }*/
     socket->close();
     qDebug("\nCompleted");
 

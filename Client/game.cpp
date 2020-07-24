@@ -49,11 +49,6 @@ void Game :: split()
     cout << endl;
     char *token = strtok(char_array, " ");
 
-    int spaces = 0;
-    for (int i = 0; i < n; i++)
-            if (char_array[i] == ' ')
-                spaces++;
-
     while (token != NULL)
     {
 
