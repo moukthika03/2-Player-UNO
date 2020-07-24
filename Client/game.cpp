@@ -37,6 +37,19 @@ bool Game::verify(int chosen)
     return false;
 }
 
+bool Game :: verifyAll()
+{
+    for(unsigned i = 0; i < player.card_list.size(); i++)
+    {
+        if (verify(player.card_list[i]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 void Game :: split()
 {
     int n = first_cards.length();

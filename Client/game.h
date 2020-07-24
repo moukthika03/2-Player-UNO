@@ -19,6 +19,7 @@ public:
     string getNumber(int);
     void displayCards();
     bool verify(int);
+    bool verifyAll();
     friend class client;
 };
 

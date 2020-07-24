@@ -45,7 +45,17 @@ void client::readyRead()
         {
             token = strtok(NULL, " ");
             game.top_card = stoi(convertToString(token));
-            game.displayCards();
+            if(game.top_card % 25 == 20 || game.top_card % 25 == 21 )
+            {
+                cout << "Your chance has been 'Skipped' as the player has played a skip card" << endl;
+                continue;
+            }
+            if(game.top_card % 25 == 22 || game.top_card % 25 == 23 )
+            {
+                 cout << "Your chance has been 'Skipped' as the player has played a reverse card" << endl;
+                 continue;
+            }
+           l1: game.displayCards();
             cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
             while(true)
             {
@@ -93,16 +103,10 @@ void client::readyRead()
                 }
 
             }
-            else if(game.top_card % 25 == 20 || game.top_card % 25 == 21 )
-            {
-                cout << "Your chance has been 'Skipped' as the player has played a skip card" << endl;
-                continue;
-            }
-            else if(game.top_card % 25 == 22 || game.top_card % 25 == 23 )
-            {
-                cout << "Your chance has been 'Skipped' as the player has played a reverse card" << endl;
-                continue;
-            }
+            else if(game.top_card % 25 == 20 || game.top_card % 25 == 21 || game.top_card % 25 == 22 || game.top_card % 25 == 23 )
+                goto l1;
+
+
             else
             {
                 string str =  to_string(game.player.card_list[selected-1]);
