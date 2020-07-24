@@ -201,18 +201,26 @@ void server :: newConnection()
             char *token = strtok(buf, " ");
             int sent_by_client = stoi(convertToString(token));
             if(sent_by_client % 25 >= 21 && sent_by_client % 25 <= 25)
-             {
+            {
                 card_list[sent_by_client - 1]->play(game, sent_by_client, 'c');
                 goto l1;
-             }
+            }
             if(sent_by_client >= 101 && sent_by_client <= 104)
             {
                 token = strtok(buf, " ");
                 card_list[sent_by_client - 1]->play(game, sent_by_client, *token);
             }
-            string sent = convertToString(buf);
-            int value = stoi(sent);
-            card_list[value - 1]->play(game, value, 'c');
+            if(sent_by_client >= 104 && sent_by_client <= 108)
+            {
+                token = strtok(buf, " ");
+                card_list[sent_by_client - 1]->play(game, sent_by_client, *token);
+                goto l1;
+            }
+            else
+            {
+                card_list[sent_by_client - 1]->play(game, sent_by_client, 'c');
+            }
+
         }
         //server's turn again
         break;
