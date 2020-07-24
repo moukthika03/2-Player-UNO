@@ -55,6 +55,8 @@ string Game :: shuffle_and_distribute()
     return client_cards;
 }
 
+
+
 string Game:: getColor(int num)
 {
     if (num <= 25)

@@ -142,8 +142,9 @@ void server :: newConnection()
         socket->flush();
         socket->waitForBytesWritten(30000);*/
 
-        socket->waitForReadyRead();
+        l1:socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
+
         if(strcmp(buf, "0") == 0)
         {
             //read card from deck
@@ -158,12 +159,16 @@ void server :: newConnection()
             socket->waitForReadyRead();
             socket->read(buf, sizeof(buf));
             game.top_card = atoi(buf);
-         }
+        }
         else
         {
+            char *token = strtok(buf, " ");
+            game.top_card = stoi(convertToString(token));
+            if(game.top_card % 25 == 20 || game.top_card % 25 == 21 || game.top_card % 25 == 22 || game.top_card % 25 == 23 )
+                        goto l1;
             string sent = convertToString(buf);
             int value = stoi(sent);
-            card_list[value - 1]->play(game, value, c);
+            card_list[value - 1]->play(game, value, 'c');
         }
         //server's turn again
         break;

@@ -22,6 +22,7 @@ class server : public QObject
 public:
     explicit server(QObject *parent = 0);
     void set_clinet_cards(std :: string);
+    string convertToString(char*);
 signals:
 
 public slots:

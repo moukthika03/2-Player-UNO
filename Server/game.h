@@ -26,6 +26,7 @@ public:
     bool verifyAll();
     bool drawCards();
 
+
     friend class Numbered;
     friend class drawFour;
     friend class drawTwo;
