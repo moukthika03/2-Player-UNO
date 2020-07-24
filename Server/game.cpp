@@ -15,13 +15,14 @@ using namespace std;
 //small change
 Game :: Game ()
 {
+    Card* temp;
     int i;
-    for(i = 1; i <= 108; i++ )
+    for(i = 1; i <= 108; i++)
     {
         if(i >= 105)
-            card_list[i] = new drawFour(i, 4);
+            temp =  new drawFour(i, 4);
         else if(i >= 101)
-            card_list[i] = new Wild(i);
+            temp = new Wild(i);
         else
         {
             char c;
@@ -35,24 +36,25 @@ Game :: Game ()
                c = 'y';
             if((i % 25) <= 10 && i % 25 !=0)
             {
-                card_list[i] = new Numbered(i%25-1, c);
+                temp = new Numbered(i%25-1, c);
             }
             else if((i % 25) <= 19 && i % 25 != 0)
             {
-                card_list[i] = new Numbered(i%25-10, c);
+                temp = new Numbered(i%25-10, c);
             }
             else if((i%25) <= 21 && i % 25 != 0)
             {
-                card_list[i] = new Skip(i ,c);
+                temp = new Skip(i ,c);
             }
             else if((i%25) <= 21 && i % 25 != 0)
             {
-                card_list[i] = new Reverse(i, c);
+                temp = new Reverse(i, c);
             }
             else
             {
-                card_list[i] = new  drawTwo(2, i);
+                temp = new drawTwo(2, i);
             }
+            card_list.push_back(temp);
         }
     }
 }
