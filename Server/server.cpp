@@ -160,6 +160,28 @@ void server :: newConnection()
                  socket->waitForBytesWritten(30000);
 
            }
+           else if(val >= 104 && val <= 108)
+           {
+               char c;
+                cout << "Please enter a color (r for red, y is for yellow, g is for green, b is for blue) " << endl;
+                cin >> c;
+                switch (c)
+                {
+                    case 'r' :  game.top_card = -1;
+                                    break;
+                    case 'y' :  game.top_card = -2;
+                                break;
+                    case 'g' :  game.top_card = -3;
+                                break;
+                    case 'b' :  game.top_card = -4;
+                }
+                 string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
+                 strcpy(buf, str.c_str());
+                 socket->write(buf);
+                 socket->flush();
+                 socket->waitForBytesWritten(30000);
+                 continue;
+           }
            else
            {
                string str =  card_list[game.player.card_list[selected]-1]->play(game, val);

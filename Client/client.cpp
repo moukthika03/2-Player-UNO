@@ -181,7 +181,7 @@ void client::readyRead()
             }
         }
 
-        else if(strcmp(token, "2") == 0)
+        if(strcmp(token, "2") == 0)
         {
             while (token != NULL)
             {
@@ -190,7 +190,7 @@ void client::readyRead()
                token = strtok(NULL, " ");
             }
         }
-        else
+        if(strcmp(token, "3") == 0))
         {
             while (token != NULL)
             {
