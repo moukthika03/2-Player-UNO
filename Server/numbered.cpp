@@ -25,5 +25,7 @@ string Numbered :: play(Game &game, int choice, char ch)
     game.shuffled.push_back(game.top_card);
     random_shuffle(game.shuffled.begin(), game.shuffled.end());
     game.top_card = choice;
-    return to_string(game.top_card);
+    string s = "1 ";
+    s.append(to_string(game.top_card));
+    return s;
 }
