@@ -3,7 +3,7 @@
 
 #include "draw.h"
 #include <iostream>
-
+#include "game.h"
 using namespace std;
 
 class drawTwo : public Draw
@@ -11,7 +11,7 @@ class drawTwo : public Draw
 private:
 public:
     drawTwo(int, int);
-    string play(char = 's');
+    string play(Game &, int, char = 's');
 };
 
 #endif // DRAWTWO_H

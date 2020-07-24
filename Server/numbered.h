@@ -3,7 +3,7 @@
 
 #include "card.h"
 #include <iostream>
-
+#include "game.h"
 using namespace std;
 class Numbered : public Card
 {
@@ -12,7 +12,7 @@ protected:
     int value;
 public:
     Numbered(int, char);
-    string play(char = 's');
+    string play(Game &, int, char = 's');
 };
 
 #endif // NUMBERED_H

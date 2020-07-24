@@ -6,7 +6,15 @@ Numbered::Numbered(int value, char colour)
     this->colour = colour;
 }
 
-string Numbered :: play(char ch)
+string Numbered :: play(Game &G, int choice, char ch)
 {
+    if(ch == 's')
+    {
+
+    }
+    else
+    {
+
+    }
     return "Check";
 }
