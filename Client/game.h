@@ -3,6 +3,8 @@
 
 #include "player.h"
 #include <string>
+#include<iostream>
+
 class Game
 {
 private:
@@ -10,7 +12,10 @@ private:
     std :: string first_cards;
     int top_card;
 public:
-    Game();
+    Game()
+    {
+        std :: cout <<" Something" << endl;
+    }
     void setFirstCards (std :: string);
     void split();
     string getColor(int);

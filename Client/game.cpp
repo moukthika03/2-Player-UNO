@@ -4,10 +4,7 @@
 #include <string.h>
 #include <iostream>
 using namespace std;
-Game::Game()
-{
 
-}
 
 void Game :: setFirstCards(string first_cards)
 {

@@ -88,7 +88,7 @@ void server :: newConnection()
                 cout << "Please enter a valid input";
         }
 
-        game.card_list[game.player.card_list[selected]-1]->play();
+        //card_list[game.player.card_list[selected]-1]->play();
 
         string str =  to_string(game.top_card);
         strcpy(buf, str.c_str());
