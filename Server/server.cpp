@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 
-
 using namespace std;
 
 server :: server(QObject *parent) : QObject(parent)

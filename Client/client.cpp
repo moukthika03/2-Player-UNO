@@ -50,7 +50,7 @@ void client::readyRead()
                 cout << "Your chance has been 'Skipped' as the player has played a skip card" << endl;
                 continue;
             }
-            if(game.top_card % 25 == 22 || game.top_card % 25 == 23 )
+            if(game.top_card % 25 == 24 || game.top_card % 25 == 25)
             {
                  cout << "Your chance has been 'Skipped' as the player has played a reverse card" << endl;
                  continue;
@@ -103,10 +103,17 @@ void client::readyRead()
                 }
 
             }
-            else if(game.top_card % 25 == 20 || game.top_card % 25 == 21 || game.top_card % 25 == 22 || game.top_card % 25 == 23 )
+            else if(game.player.card_list[selected-1] % 25 == 20 || game.player.card_list[selected-1] % 25 == 21 || game.player.card_list[selected-1]% 25 == 24 || game.player.card_list[selected-1] % 25 == 25 )
                 goto l1;
-
-
+            else if(game.player.card_list[selected-1] % 25 == 22 || game.player.card_list[selected-1] % 25 == 23)
+            {
+                string str =  to_string(game.player.card_list[selected-1]);
+                strcpy(buf, str.c_str());
+                socket->write(buf);
+                socket->flush();
+                socket->waitForBytesWritten(30000);
+                goto l1;
+            }
             else
             {
                 string str =  to_string(game.player.card_list[selected-1]);

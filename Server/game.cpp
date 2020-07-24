@@ -158,8 +158,9 @@ bool Game :: drawCards()
     return flag;
 }
 
-void Game :: draw()
+int Game :: draw()
 {
-    player.card_list.push_back(shuffled[0]);
+    int val = shuffled[0];
     shuffled.erase(shuffled.begin());
+    return val;
 }
