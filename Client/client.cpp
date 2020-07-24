@@ -123,6 +123,25 @@ void client::readyRead()
                 socket->waitForBytesWritten(30000);
             }
         }
+
+        else if(strcmp(token, "2") == 0)
+        {
+            while (token != NULL)
+            {
+               int num = stoi(token);
+               game.player.card_list.push_back(num);
+               token = strtok(NULL, " ");
+            }
+        }
+        else
+        {
+            while (token != NULL)
+            {
+               int num = stoi(token);
+               game.player.card_list.push_back(num);
+               token = strtok(NULL, " ");
+            }
+        }
         /*string top = convertToString(buf);
         game.top_card = stoi(top);*/
 
