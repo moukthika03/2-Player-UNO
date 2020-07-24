@@ -84,6 +84,7 @@ void client::readyRead()
                 else
                 {
                     cout << "You have received" << game.getColor(value) << " " << game.getNumber(value) << endl;
+                    game.player.card_list.push_back(value);
                     string str =  to_string(game.top_card);
                     strcpy(buf, str.c_str());
                     socket->write(buf);
