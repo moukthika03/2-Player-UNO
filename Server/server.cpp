@@ -62,6 +62,17 @@ server :: server(QObject *parent) : QObject(parent)
    }
 }
 
+string server :: convertToString(char* a)
+{
+    int i = 0;
+    string s = "";
+    while(a[i] != '\0') {
+        s = s + a[i];
+        i++;
+    }
+    cout << "\nS is " << s << endl;
+    return s;
+}
 
 
 void server :: newConnection()
@@ -148,6 +159,12 @@ void server :: newConnection()
             socket->read(buf, sizeof(buf));
             game.top_card = atoi(buf);
          }
+        else
+        {
+            string sent = convertToString(buf);
+            int value = stoi(sent);
+            card_list[value - 1]->play(game, value, c);
+        }
         //server's turn again
         break;
     }

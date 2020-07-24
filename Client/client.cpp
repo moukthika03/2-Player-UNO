@@ -93,6 +93,16 @@ void client::readyRead()
                 }
 
             }
+            else if(game.top_card % 25 == 20 || game.top_card % 25 == 21 )
+            {
+                cout << "Your chance has been 'Skipped' as the player has played a skip card" << endl;
+                continue;
+            }
+            else if(game.top_card % 25 == 22 || game.top_card % 25 == 23 )
+            {
+                cout << "Your chance has been 'Skipped' as the player has played a reverse card" << endl;
+                continue;
+            }
             else
             {
                 string str =  to_string(game.player.card_list[selected-1]);
