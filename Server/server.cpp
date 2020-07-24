@@ -94,7 +94,8 @@ void server :: newConnection()
             game.drawCards();
             continue;
         }
-        card_list[game.player.card_list[selected]-1]->play(game, selected);
+        int val = game.player.card_list[selected - 1];
+        card_list[game.player.card_list[selected]-1]->play(game, val);
 
         string str =  to_string(game.top_card);
         strcpy(buf, str.c_str());
