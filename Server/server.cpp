@@ -133,6 +133,21 @@ void server :: newConnection()
 
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
+        if(strcmp(buf, "0") == 0)
+        {
+            //read card from deck
+            int val;
+            string send;
+            val = game.shuffled[0];
+            send = to_string(val);
+            strcpy(buf, send.c_str());
+            socket->write(buf);
+            socket->flush();
+            socket->waitForBytesWritten(30000);
+            game.top_card = atoi(buf);
+
+         }
+        //server's turn again
         break;
     }
 
