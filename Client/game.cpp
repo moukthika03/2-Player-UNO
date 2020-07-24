@@ -100,6 +100,7 @@ string  Game:: getNumber(int num)
 }
 void Game::displayCards()
 {
+    cout << "\nThe Top card is " << getColor(top_card) << " " << getNumber(top_card) << endl;
     cout << "\nYou have the cards:" << endl;
     for (unsigned i = 0; i < player.card_list.size(); i++)
     {

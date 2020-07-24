@@ -12,10 +12,7 @@ private:
     std :: string first_cards;
     int top_card;
 public:
-    Game()
-    {
-        std :: cout <<" Something" << endl;
-    }
+
     void setFirstCards (std :: string);
     void split();
     string getColor(int);
