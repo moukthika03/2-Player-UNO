@@ -144,8 +144,9 @@ void server :: newConnection()
             socket->write(buf);
             socket->flush();
             socket->waitForBytesWritten(30000);
+            socket->waitForReadyRead();
+            socket->read(buf, sizeof(buf));
             game.top_card = atoi(buf);
-
          }
         //server's turn again
         break;
