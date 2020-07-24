@@ -163,9 +163,13 @@ void server :: newConnection()
         else
         {
             char *token = strtok(buf, " ");
-            game.top_card = stoi(convertToString(token));
-            if(game.top_card % 25 == 20 || game.top_card % 25 == 21 || game.top_card % 25 == 22 || game.top_card % 25 == 23 )
-                        goto l1;
+            int sent_by_client = stoi(convertToString(token));
+            if(sent_by_client % 25 == 20 || sent_by_client % 25 == 21 || sent_by_client % 25 == 22 || sent_by_client % 25 == 23 )
+             {
+                card_list[sent_by_client - 1]->play(game, sent_by_client, 'c');
+                goto l1;
+             }
+
             string sent = convertToString(buf);
             int value = stoi(sent);
             card_list[value - 1]->play(game, value, 'c');
