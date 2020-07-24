@@ -17,6 +17,14 @@ void Game :: setFirstCards(string first_cards)
 
 bool Game::verify(int chosen)
 {
+    if(top_card == -1 && (chosen >= 1 || chosen <= 25))
+        return true;
+    if(top_card == -2 && (chosen >= 25 || chosen <= 50))
+        return true;
+    if(top_card == -3 && (chosen >= 51 || chosen <= 75))
+        return true;
+    if(top_card == -4 && (chosen >= 75 || chosen <= 100))
+        return true;
     if(chosen % 25 == top_card % 25)
     {
         return true;
