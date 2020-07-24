@@ -126,8 +126,32 @@ bool Game::verify(int chosen)
     return false;
 }
 
-void Game :: drawCards()
+bool Game :: verifyAll()
 {
-    player.card_list.push_back(shuffled[0]);
-    shuffled.erase(shuffled.begin());
+    for(unsigned i = 0; i < player.card_list.size(); i++)
+    {
+        if (verify(player.card_list[i]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Game :: drawCards()
+{
+    bool flag = false;
+    if(!verifyAll())
+    {
+        player.card_list.push_back(shuffled[0]);
+        if (verify(shuffled[0]))
+        {
+            top_card = shuffled[0];
+            player.card_list.erase(player.card_list.end());
+            flag = true;
+        }
+        shuffled.erase(shuffled.begin());
+
+    }
+    return flag;
 }

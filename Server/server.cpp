@@ -87,21 +87,45 @@ void server :: newConnection()
             if(game.verify(game.player.card_list[selected-1]))
                 break;
             else
-                cout << "Please enter a valid input";
+                cout << "Please enter a valid input: ";
         }
         if (selected == 0)
         {
-            game.drawCards();
+            bool flag = game.drawCards();
+            if(!game.verifyAll())
+            {
+                if(flag)
+                {
+                    cout << "You have received and played " << game.getColor( game.top_card) << " " <<  game.getNumber( game.top_card) << endl;
+
+                }
+                else
+                {
+                    cout << "You have received a card" << endl;
+                }
+            }
+
+            string str =  to_string(game.top_card);
+            strcpy(buf, str.c_str());
+            socket->write(buf);
+            socket->flush();
+            socket->waitForBytesWritten(30000);
+
             continue;
         }
-        int val = game.player.card_list[selected - 1];
-        card_list[game.player.card_list[selected]-1]->play(game, val);
+        else
+        {
+            int val = game.player.card_list[selected - 1];
+            card_list[game.player.card_list[selected]-1]->play(game, val);
+        }
 
-        string str =  to_string(game.top_card);
+
+
+       /* string str =  to_string(game.top_card);
         strcpy(buf, str.c_str());
         socket->write(buf);
         socket->flush();
-        socket->waitForBytesWritten(30000);
+        socket->waitForBytesWritten(30000);*/
 
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));

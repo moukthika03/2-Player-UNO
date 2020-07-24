@@ -23,7 +23,8 @@ public:
     string getNumber(int);
     void displayCards();
     bool verify(int);
-    void drawCards();
+    bool verifyAll();
+    bool drawCards();
 
     friend class Numbered;
     friend class drawFour;
