@@ -119,6 +119,31 @@ void client::readyRead()
                 socket->waitForBytesWritten(30000);
                 goto l1;
             }
+            else if (game.player.card_list[selected-1] <= 104 && game.player.card_list[selected-1] >= 101)
+            {
+                char c;
+                 cout << "Please enter a color (r for red, y is for yellow, g is for green, b is for blue) " << endl;
+                 cin >> c;
+                 string str =  to_string(game.player.card_list[selected-1]);
+
+                 switch (c)
+                 {
+                     case 'r' :  str += " r";
+                                     break;
+                     case 'y' :  str += " y";
+                                 break;
+                     case 'g' :  str += " g";
+                                 break;
+                     case 'b' :  str += " b";
+                 }
+
+
+                 game.player.card_list.erase(game.player.card_list.begin()+ selected-1);
+                 strcpy(buf, str.c_str());
+                 socket->write(buf);
+                 socket->flush();
+                 socket->waitForBytesWritten(30000);
+            }
             else
             {
                 string str =  to_string(game.player.card_list[selected-1]);

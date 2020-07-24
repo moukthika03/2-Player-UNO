@@ -127,19 +127,47 @@ void server :: newConnection()
         {
 
            int val = game.player.card_list[selected - 1];
-           string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
-           if(val >= 21 && val <= 25)
+
+           if(val % 25 >= 21 && val % 25 <= 25)
            {
+               string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
                strcpy(buf, str.c_str());
                socket->write(buf);
                socket->flush();
                socket->waitForBytesWritten(30000);
                continue;
            }
-           strcpy(buf, str.c_str());
-           socket->write(buf);
-           socket->flush();
-           socket->waitForBytesWritten(30000);
+           else if (val >= 101 && val <= 104)
+           {
+
+               char c;
+                cout << "Please enter a color (r for red, y is for yellow, g is for green, b is for blue) " << endl;
+                cin >> c;
+                switch (c)
+                {
+                    case 'r' :  game.top_card = -1;
+                                    break;
+                    case 'y' :  game.top_card = -2;
+                                break;
+                    case 'g' :  game.top_card = -3;
+                                break;
+                    case 'b' :  game.top_card = -4;
+                }
+                 string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
+                 strcpy(buf, str.c_str());
+                 socket->write(buf);
+                 socket->flush();
+                 socket->waitForBytesWritten(30000);
+
+           }
+           else
+           {
+               string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
+               strcpy(buf, str.c_str());
+               socket->write(buf);
+               socket->flush();
+               socket->waitForBytesWritten(30000);
+           }
         }
 
 
@@ -172,11 +200,16 @@ void server :: newConnection()
         {
             char *token = strtok(buf, " ");
             int sent_by_client = stoi(convertToString(token));
-            if(sent_by_client >= 21 && sent_by_client <= 25)
+            if(sent_by_client % 25 >= 21 && sent_by_client % 25 <= 25)
              {
                 card_list[sent_by_client - 1]->play(game, sent_by_client, 'c');
                 goto l1;
              }
+            if(sent_by_client >= 101 && sent_by_client <= 104)
+            {
+                token = strtok(buf, " ");
+                card_list[sent_by_client - 1]->play(game, sent_by_client, *token);
+            }
             string sent = convertToString(buf);
             int value = stoi(sent);
             card_list[value - 1]->play(game, value, 'c');
