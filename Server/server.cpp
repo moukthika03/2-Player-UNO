@@ -73,7 +73,14 @@ string server :: convertToString(char* a)
     return s;
 }
 
-
+void server :: penalty()
+{
+    for(unsigned i = 0; i < 2; i++)
+    {
+        int val = game.draw();
+        game.player.card_list.push_back(val);
+    }
+}
 void server :: newConnection()
 {
     qDebug() << "Connected to the Client";
@@ -89,7 +96,15 @@ void server :: newConnection()
     {
         game.displayCards();
         cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
-
+        if (game.player.card_list.size() == 2)
+        {
+            char uno[5];
+            cin >> uno;
+            if(strcmp("Uno", uno) != 0)
+            {
+                penalty();
+            }
+        }
         while(true)
         {
             cin >> selected;
@@ -99,6 +114,7 @@ void server :: newConnection()
             else
                 cout << "Please enter a valid input: ";
         }
+
         if (selected == 0)
         {
             bool flag = game.drawCards();
@@ -128,7 +144,7 @@ void server :: newConnection()
 
            int val = game.player.card_list[selected - 1];
 
-           if(val % 25 >= 21 && val % 25 <= 25)
+           if(val % 25 >= 19 && val % 25 <= 24)
            {
                string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
                strcpy(buf, str.c_str());
@@ -222,7 +238,7 @@ void server :: newConnection()
         {
             char *token = strtok(buf, " ");
             int sent_by_client = stoi(convertToString(token));
-            if(sent_by_client % 25 >= 21 && sent_by_client % 25 <= 25)
+            if(sent_by_client % 25 >= 19 && sent_by_client % 25 <= 24)
             {
                 card_list[sent_by_client - 1]->play(game, sent_by_client, 'c');
                 goto l1;

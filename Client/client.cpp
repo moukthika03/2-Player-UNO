@@ -45,12 +45,12 @@ void client::readyRead()
         {
             token = strtok(NULL, " ");
             game.top_card = stoi(convertToString(token));
-            if(game.top_card % 25 == 20 || game.top_card % 25 == 21 )
+            if(game.top_card % 25 == 19 || game.top_card % 25 == 20 )
             {
                 cout << "Your chance has been 'Skipped' as the player has played a skip card" << endl;
                 continue;
             }
-            if(game.top_card % 25 == 24 || game.top_card % 25 == 25)
+            if(game.top_card % 25 == 23 || game.top_card % 25 == 24)
             {
                  cout << "Your chance has been 'Skipped' as the player has played a reverse card" << endl;
                  continue;
@@ -103,13 +103,13 @@ void client::readyRead()
                 }
 
             }
-            else if(game.player.card_list[selected-1] % 25 == 20 || game.player.card_list[selected-1] % 25 == 21 || game.player.card_list[selected-1]% 25 == 24 || game.player.card_list[selected-1] % 25 == 25 )
+            else if(game.player.card_list[selected-1] % 25 == 19 || game.player.card_list[selected-1] % 25 == 20 || game.player.card_list[selected-1]% 25 == 23 || game.player.card_list[selected-1] % 25 == 24 )
             {
                 game.player.card_list.erase(game.player.card_list.begin()+ selected-1);
                 goto l1;
             }
 
-            else if(game.player.card_list[selected-1] % 25 == 22 || game.player.card_list[selected-1] % 25 == 23)
+            else if(game.player.card_list[selected-1] % 25 == 21 || game.player.card_list[selected-1] % 25 == 22)
             {
                 string str =  to_string(game.player.card_list[selected-1]);
                 game.player.card_list.erase(game.player.card_list.begin()+ selected-1);
@@ -190,7 +190,7 @@ void client::readyRead()
                token = strtok(NULL, " ");
             }
         }
-        if(strcmp(token, "3") == 0))
+        if(strcmp(token, "3") == 0)
         {
             while (token != NULL)
             {
@@ -199,10 +199,6 @@ void client::readyRead()
                token = strtok(NULL, " ");
             }
         }
-        /*string top = convertToString(buf);
-        game.top_card = stoi(top);*/
-
-
 
         break;
     }
