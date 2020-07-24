@@ -56,11 +56,50 @@ void client::readyRead()
                 else
                     cout << "Please enter a valid input";
             }
-            string str =  to_string(game.player.card_list[selected-1]);
-            strcpy(buf, str.c_str());
-            socket->write(buf);
-            socket->flush();
-            socket->waitForBytesWritten(30000);
+            if (selected == 0 && !game.verifyAll())
+            {
+                strcpy(buf, "0");
+
+                socket->write(buf);
+                socket->flush();
+                socket->waitForBytesWritten(30000);
+
+
+                socket->waitForReadyRead();
+                socket->read(buf, sizeof(buf));
+
+                string str = convertToString(buf);
+
+                int value = stoi(str);
+                if(game.verify(value))
+                {
+                    cout << "You have received and played" << game.getColor(value) << " " << game.getNumber(value) << endl;
+                    game.top_card = value;
+                    string str =  to_string(value);
+                    strcpy(buf, str.c_str());
+                    socket->write(buf);
+                    socket->flush();
+                    socket->waitForBytesWritten(30000);
+                }
+                else
+                {
+                    cout << "You have received" << game.getColor(value) << " " << game.getNumber(value) << endl;
+                    string str =  to_string(game.top_card);
+                    strcpy(buf, str.c_str());
+                    socket->write(buf);
+                    socket->flush();
+                    socket->waitForBytesWritten(30000);
+                }
+
+            }
+            else
+            {
+                string str =  to_string(game.player.card_list[selected-1]);
+                strcpy(buf, str.c_str());
+                socket->write(buf);
+                socket->flush();
+                socket->waitForBytesWritten(30000);
+            }
         }
         /*string top = convertToString(buf);
         game.top_card = stoi(top);*/
