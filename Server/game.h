@@ -25,7 +25,7 @@ public:
     bool verify(int);
     bool verifyAll();
     bool drawCards();
-
+    void draw();
 
     friend class Numbered;
     friend class drawFour;
