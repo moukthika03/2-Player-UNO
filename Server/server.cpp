@@ -82,7 +82,8 @@ void server :: newConnection()
         while(true)
         {
             cin >> selected;
-            if(game.verify(game.player.card_list[selected]))
+
+            if(game.verify(game.player.card_list[selected-1]))
                 break;
             else
                 cout << "Please enter a valid input";

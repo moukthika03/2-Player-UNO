@@ -14,6 +14,8 @@ void Game :: setFirstCards(string first_cards)
 
 bool Game::verify(int chosen)
 {
+    cout << "\nTop card is " << top_card << endl;
+    cout << "Chosen card is " << chosen << endl;
     if(top_card == -1 && (chosen >= 1 || chosen <= 25))
         return true;
     if(top_card == -2 && (chosen >= 25 || chosen <= 50))
@@ -100,11 +102,11 @@ string  Game:: getNumber(int num)
 }
 void Game::displayCards()
 {
-    cout << "\nThe Top card is " << getColor(top_card) << " " << getNumber(top_card) << endl;
+    cout << "\nThe Top card is " << getColor(top_card) << " " << getNumber(top_card) << " Code is " << top_card << endl;
     cout << "\nYou have the cards:" << endl;
     for (unsigned i = 0; i < player.card_list.size(); i++)
     {
         cout << endl << i+1 << ". ";
-        cout << getColor(player.card_list[i]) << " " << getNumber(player.card_list[i]) << " " ;
+        cout << getColor(player.card_list[i]) << " " << getNumber(player.card_list[i]) << " Code is " << player.card_list[i] << " " ;
     }
 }

@@ -48,6 +48,7 @@ void client::readyRead()
         while(true)
         {
             cin >> selected;
+            selected--;
             if(game.verify(game.player.card_list[selected]))
                 break;
             else
