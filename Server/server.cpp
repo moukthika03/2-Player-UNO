@@ -125,8 +125,17 @@ void server :: newConnection()
         }
         else
         {
+
            int val = game.player.card_list[selected - 1];
            string str =  card_list[game.player.card_list[selected]-1]->play(game, val);
+           if(val >= 21 && val <= 25)
+           {
+               strcpy(buf, str.c_str());
+               socket->write(buf);
+               socket->flush();
+               socket->waitForBytesWritten(30000);
+               continue;
+           }
            strcpy(buf, str.c_str());
            socket->write(buf);
            socket->flush();
@@ -163,12 +172,11 @@ void server :: newConnection()
         {
             char *token = strtok(buf, " ");
             int sent_by_client = stoi(convertToString(token));
-            if(sent_by_client % 25 == 20 || sent_by_client % 25 == 21 || sent_by_client % 25 == 22 || sent_by_client % 25 == 23 )
+            if(sent_by_client >= 21 && sent_by_client <= 25)
              {
                 card_list[sent_by_client - 1]->play(game, sent_by_client, 'c');
                 goto l1;
              }
-
             string sent = convertToString(buf);
             int value = stoi(sent);
             card_list[value - 1]->play(game, value, 'c');
