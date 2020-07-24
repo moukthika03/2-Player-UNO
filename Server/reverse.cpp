@@ -5,7 +5,7 @@ Reverse::Reverse(int value, char color) : Special (value)
     this->color = color;
 }
 
-void Reverse :: play()
+string Reverse :: play(Game &G, int choice, char ch)
 {
-
+    return "Check";
 }

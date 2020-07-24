@@ -4,7 +4,7 @@ Wild::Wild(int a) : Special(a), colorChange(a)
 {
 
 }
-void Wild::play()
+string Wild::play(Game &G, int choice, char ch)
 {
-
+    return "Check";
 }

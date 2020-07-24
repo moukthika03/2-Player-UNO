@@ -7,6 +7,48 @@ using namespace std;
 
 server :: server(QObject *parent) : QObject(parent)
 {
+    Card* temp;
+    int i;
+    for(i = 1; i <= 108; i++)
+    {
+        if(i >= 105)
+            temp =  new drawFour(i, 4);
+        else if(i >= 101)
+            temp = new Wild(i);
+        else
+        {
+            char c;
+            if(i <= 25)
+                c = 'r';
+            else if(i <= 50)
+                c = 'g';
+            else if(i <= 75)
+                c = 'b';
+            else
+               c = 'y';
+            if((i % 25) <= 10 && i % 25 !=0)
+            {
+                temp = new Numbered(i%25-1, c);
+            }
+            else if((i % 25) <= 19 && i % 25 != 0)
+            {
+                temp = new Numbered(i%25-10, c);
+            }
+            else if((i%25) <= 21 && i % 25 != 0)
+            {
+                temp = new Skip(i ,c);
+            }
+            else if((i%25) <= 21 && i % 25 != 0)
+            {
+                temp = new Reverse(i, c);
+            }
+            else
+            {
+                temp = new drawTwo(2, i);
+            }
+            card_list.push_back(temp);
+        }
+    }
     ser = new QTcpServer(this);
    // whenever a user connects, it will emit signal
    connect(ser, SIGNAL(newConnection()),this, SLOT(newConnection()));

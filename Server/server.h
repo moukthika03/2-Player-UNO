@@ -7,6 +7,14 @@
 #include <QDebug>
 #include <string>
 #include "game.h"
+#include "card.h"
+#include "player.h"
+#include <drawfour.h>
+#include <wild.h>
+#include <numbered.h>
+#include <reverse.h>
+#include <drawtwo.h>
+#include <skip.h>
 
 class server : public QObject
 {
@@ -22,6 +30,7 @@ public slots:
 private:
     QTcpServer* ser;
     char client_cards[1024];
+    vector<Card*> card_list;
     Game game;
 };
 

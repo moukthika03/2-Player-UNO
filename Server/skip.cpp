@@ -5,7 +5,7 @@ Skip::Skip(int value, char color) : Special(value)
     this->color = color;
 }
 
-void Skip :: play()
+string Skip :: play(Game &G, int choice, char ch)
 {
-
+    return "Check";
 }

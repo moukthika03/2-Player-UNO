@@ -6,9 +6,9 @@ drawFour::drawFour(int draw, int value) : Special(value), Draw(draw, value)
 
 }
 
-void drawFour :: play()
+string drawFour :: play(Game &G, int choice, char ch)
 {
-
+    return "Check";
 }
 
 
