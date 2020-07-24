@@ -79,6 +79,7 @@ void server :: newConnection()
     {
         game.displayCards();
         cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
+
         while(true)
         {
             cin >> selected;
@@ -88,7 +89,11 @@ void server :: newConnection()
             else
                 cout << "Please enter a valid input";
         }
-
+        if (selected == 0)
+        {
+            game.drawCards();
+            continue;
+        }
         card_list[game.player.card_list[selected]-1]->play(game, selected);
 
         string str =  to_string(game.top_card);
@@ -101,26 +106,7 @@ void server :: newConnection()
         socket->read(buf, sizeof(buf));
         break;
     }
-    /*while(true)
-    {
-        socket->waitForReadyRead();
-        socket->read(buf, sizeof(buf));
 
-        if(!strcmp(buf, "end") || !strcmp(buf, "End") || !strcmp(buf, "END"))
-        {
-            cout << "Client closed the connection" << endl;
-            cout << "Closing connection...";
-            break;
-        }
-        cout << "\n\nMessage sent by Client is: " << buf;
-
-        cout << "\n\nEnter the message: ";
-        cin >> buf;
-        cin.sync();
-        socket->write(buf);
-        socket->flush();
-        socket->waitForBytesWritten(30000);
-    }*/
 
 
     socket->close();
