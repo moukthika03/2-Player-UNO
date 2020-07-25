@@ -116,12 +116,19 @@ void server :: newConnection()
         }
         while(true)
         {
-            cin >> selected;
-
-            if(game.verify(game.player.card_list[selected-1]))
-                break;
-            else
+            try {
+                cin>>selected;
+                if(game.verify(game.player.card_list[selected-1]))
+                {
+                    break;
+                }
+                else
+                {
+                    throw selected;
+                }
+            } catch (...) {
                 cout << "Please enter a valid input: ";
+            }
         }
 
         if (selected == 0)
@@ -284,7 +291,6 @@ void server :: newConnection()
 
         }
         //server's turn again
-        break;
     }
 
 

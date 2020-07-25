@@ -216,7 +216,6 @@ void client::readyRead()
             }
         }
 
-        break;
     }
 
 
