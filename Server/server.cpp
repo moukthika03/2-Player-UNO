@@ -268,7 +268,6 @@ void server :: newConnection()
 
         }
         //server's turn again
-        break;
     }
 
 
