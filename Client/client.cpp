@@ -27,6 +27,7 @@ string client :: convertToString(char* a)
 }
 void client::readyRead()
 {
+    bool win = true;
     qDebug() << "Reading\n";
     //QString str;
     char buf[1024] = {0};
@@ -40,9 +41,27 @@ void client::readyRead()
     {
         socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
+
         char *token = strtok(buf, " ");
+
+        if(strcmp(token, "win") == 0)
+        {
+            win = false;
+            break;
+        }
+
+
         if(strcmp(token, "1") == 0)
         {
+            if (game.player.card_list.size() == 0)
+            {
+                string str = "win";
+                strcpy(buf, str.c_str());
+                socket->write(buf);
+                socket->flush();
+                socket->waitForBytesWritten(30000);
+                break;
+            }
             token = strtok(NULL, " ");
             game.top_card = stoi(convertToString(token));
             if(game.top_card % 25 == 19 || game.top_card % 25 == 20 )
@@ -153,7 +172,6 @@ void client::readyRead()
                      case 'b' :  str += " b";
                  }
 
-
                  game.player.card_list.erase(game.player.card_list.begin()+ selected-1);
                  strcpy(buf, str.c_str());
                  socket->write(buf);
@@ -218,6 +236,14 @@ void client::readyRead()
 
     }
 
+    if(win)
+    {
+        cout << "Congratulations you Won!!!" << endl;
+    }
+    else
+    {
+        cout << "Sorry, You lost. Better luck next time" << endl;
+    }
 
     socket->close();
     qDebug("\nCompleted");

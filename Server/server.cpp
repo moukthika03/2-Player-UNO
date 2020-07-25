@@ -85,6 +85,7 @@ void server :: penalty()
 }
 void server :: newConnection()
 {
+    bool win = true;
     qDebug() << "Connected to the Client";
     string client_cards_string = game.shuffle_and_distribute();
     QTcpSocket *socket = ser->nextPendingConnection();
@@ -130,7 +131,15 @@ void server :: newConnection()
                 cout << "Please enter a valid input: ";
             }
         }
-
+        if (game.player.card_list.size() == 0)
+        {
+            string str = "1 win";
+            strcpy(buf, str.c_str());
+            socket->write(buf);
+            socket->flush();
+            socket->waitForBytesWritten(30000);
+            break;
+        }
         if (selected == 0)
         {
             bool flag = game.drawCards();
@@ -234,7 +243,11 @@ void server :: newConnection()
 
         l1:socket->waitForReadyRead();
         socket->read(buf, sizeof(buf));
-
+        if(strcmp(buf, "win") == 0)
+        {
+            win = false;
+            break;
+        }
         if(strcmp(buf, "0") == 0)
         {
             //read card from deck
@@ -293,7 +306,14 @@ void server :: newConnection()
         //server's turn again
     }
 
-
+    if(win)
+    {
+        cout << "Congratulations you Won!!!" << endl;
+    }
+    else
+    {
+        cout << "Sorry, You lost. Better luck next time" << endl;
+    }
 
     socket->close();
 }
