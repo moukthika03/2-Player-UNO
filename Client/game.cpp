@@ -70,9 +70,11 @@ void Game :: split()
        token = strtok(NULL, " ");
     }
 
+    /*
     cout << "\nCard list is " << endl;
     for (unsigned i = 0; i < player.card_list.size(); i++)
             cout << player.card_list[i] << " ";
+    */
     displayCards();
 }
 string Game:: getColor(int num)
