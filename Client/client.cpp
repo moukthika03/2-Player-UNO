@@ -39,7 +39,7 @@ void client::readyRead()
     int selected;
     while(true)
     {
-        socket->waitForReadyRead();
+        socket->waitForReadyRead(-1);
         socket->read(buf, sizeof(buf));
 
         char *token = strtok(buf, " ");
@@ -110,7 +110,7 @@ void client::readyRead()
                 socket->waitForBytesWritten(30000);
 
 
-                socket->waitForReadyRead();
+                socket->waitForReadyRead(-1);
                 socket->read(buf, sizeof(buf));
 
                 string str = convertToString(buf);

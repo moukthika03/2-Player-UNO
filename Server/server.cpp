@@ -241,7 +241,7 @@ void server :: newConnection()
         socket->flush();
         socket->waitForBytesWritten(30000);*/
 
-        l1:socket->waitForReadyRead();
+        l1:socket->waitForReadyRead(-1);
         socket->read(buf, sizeof(buf));
         if(strcmp(buf, "win") == 0)
         {
@@ -259,7 +259,7 @@ void server :: newConnection()
             socket->write(buf);
             socket->flush();
             socket->waitForBytesWritten(30000);
-            socket->waitForReadyRead();
+            socket->waitForReadyRead(-1);
             socket->read(buf, sizeof(buf));
             game.top_card = atoi(buf);
         }
