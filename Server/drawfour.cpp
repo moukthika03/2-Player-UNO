@@ -1,7 +1,7 @@
 #include "drawfour.h"
 #include <vector>
 
-drawFour::drawFour(int draw, int value) : Special(value), Draw(draw, value)
+drawFour::drawFour(int draw, int value) : Special(value), Draw(draw, value), colorChange(value)
 {
 
 }
