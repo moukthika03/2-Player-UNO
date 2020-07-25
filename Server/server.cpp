@@ -99,22 +99,7 @@ void server :: newConnection()
     {
         game.displayCards();
         cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
-        if (game.player.card_list.size() == 2)
-        {
-            char uno[5];
-            cin >> uno;
-            if(strcmp("Uno", uno) != 0)
-            {
-                penalty();
-                string str = "1 ";
-                str +=  to_string(game.top_card);
-                strcpy(buf, str.c_str());
-                socket->write(buf);
-                socket->flush();
-                socket->waitForBytesWritten(30000);
-                goto l1;
-            }
-        }
+
         while(true)
         {
             try {
@@ -135,6 +120,22 @@ void server :: newConnection()
                 }
             } catch (...) {
                 cout << "Please enter a valid input: ";
+            }
+        }
+        if (game.player.card_list.size() == 2 && game.verifyAll() && selected != 0)
+        {
+            char uno[5];
+            cin >> uno;
+            if(strcmp("Uno", uno) != 0)
+            {
+                penalty();
+                string str = "1 ";
+                str +=  to_string(game.top_card);
+                strcpy(buf, str.c_str());
+                socket->write(buf);
+                socket->flush();
+                socket->waitForBytesWritten(30000);
+                goto l1;
             }
         }
         if (game.player.card_list.size() == 0)
