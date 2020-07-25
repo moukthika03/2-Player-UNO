@@ -33,22 +33,23 @@ string drawFour :: play(Game &game, int choice, char ch)
          c.append(to_string(a));
          c.append(" ");
     }
-    int temp = game.top_card%25;
+    int temp;
     switch(color)
     {
         case 'r':   {
+                        temp = -1;
                         break;
                     }
         case 'y':   {
-                        temp+=25;
+                        temp = -2;
                         break;
                     }
         case 'b':   {
-                        temp+=50;
+                        temp = -3;
                         break;
                     }
         case 'g':   {
-                         temp+=75;
+                         temp = -4;
                          break;
                     }
     }
