@@ -107,6 +107,8 @@ bool Game::verify(int chosen)
 {
     /*cout << "\nTop card is " << top_card << endl;
     cout << "Chosen card is " << chosen << endl;*/
+    if(chosen == 0)
+        return true;
     if(top_card == -1 && (chosen >= 1 || chosen <= 25))
         return true;
     if(top_card == -2 && (chosen >= 25 || chosen <= 50))
