@@ -11,6 +11,7 @@ class client: public QObject
 public:
     explicit client(QObject *parent = 0);
     string convertToString(char*);
+
 signals:
 
 public slots:

@@ -75,6 +75,8 @@ string server :: convertToString(char* a)
 
 void server :: penalty()
 {
+    cout << "You have not pressed 'Uno' before putting the card. You get two more cards." << endl;
+
     for(unsigned i = 0; i < 2; i++)
     {
         int val = game.draw();
@@ -103,6 +105,13 @@ void server :: newConnection()
             if(strcmp("Uno", uno) != 0)
             {
                 penalty();
+                string str = "1 ";
+                str +=  to_string(game.top_card);
+                strcpy(buf, str.c_str());
+                socket->write(buf);
+                socket->flush();
+                socket->waitForBytesWritten(30000);
+                goto l1;
             }
         }
         while(true)
@@ -240,6 +249,20 @@ void server :: newConnection()
             socket->waitForReadyRead();
             socket->read(buf, sizeof(buf));
             game.top_card = atoi(buf);
+        }
+        else if(strcmp(buf, "penalty") == 0)
+        {
+            string c = "2 ";
+            int a = game.draw();
+            c.append(to_string(a));
+            c.append(" ");
+            a = game.draw();
+            c.append(to_string(a));
+            strcpy(buf, c.c_str());
+            socket->write(buf);
+            socket->flush();
+            socket->waitForBytesWritten(30000);
+
         }
         else
         {
