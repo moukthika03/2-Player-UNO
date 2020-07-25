@@ -96,7 +96,12 @@ void client::readyRead()
             {
                 cin >> selected;
                 selected--;
-                if(game.verify(game.player.card_list[selected]))
+                int val;
+                if(selected == 0)
+                   val = 0;
+                else
+                    val = game.player.card_list[selected-1];
+                if(game.verify(val))
                     break;
                 else
                     cout << "Please enter a valid input";

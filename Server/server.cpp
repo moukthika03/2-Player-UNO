@@ -119,7 +119,13 @@ void server :: newConnection()
         {
             try {
                 cin>>selected;
-                if(game.verify(game.player.card_list[selected-1]))
+
+                int val;
+                if(selected == 0)
+                   val = 0;
+                else
+                    val = game.player.card_list[selected-1];
+                if(game.verify(val))
                 {
                     break;
                 }
@@ -241,8 +247,11 @@ void server :: newConnection()
         socket->flush();
         socket->waitForBytesWritten(30000);*/
 
+        cout << "\nBefore Reading " << endl;
         l1:socket->waitForReadyRead(-1);
         socket->read(buf, sizeof(buf));
+        cout << "\nAfter Reading " << endl;
+
         if(strcmp(buf, "win") == 0)
         {
             win = false;
