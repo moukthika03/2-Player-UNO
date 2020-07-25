@@ -240,14 +240,6 @@ void server :: newConnection()
            }
         }
 
-
-
-       /* string str =  to_string(game.top_card);
-        strcpy(buf, str.c_str());
-        socket->write(buf);
-        socket->flush();
-        socket->waitForBytesWritten(30000);*/
-
         cout << "\nBefore Reading " << endl;
         l1:socket->waitForReadyRead(-1);
         socket->read(buf, sizeof(buf));

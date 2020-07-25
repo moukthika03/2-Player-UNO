@@ -3,7 +3,6 @@
 #include "game.h"
 #include <QDebug>
 #include <iostream>
-#include <QTextCodec>
 using namespace std;
 
 client::client(QObject* parent):QObject(parent)
@@ -82,7 +81,7 @@ void client::readyRead()
                 cin >> selected;
                 selected--;
                 int val;
-                if(selected == 0)
+                if(selected == -1)
                    val = 0;
                 else
                     val = game.player.card_list[selected-1];
@@ -98,14 +97,14 @@ void client::readyRead()
                 cin >> uno;
                 if(strcmp("Uno", uno) != 0)
                 {
-                    penalty();
-                    string str = "1 ";
-                    str +=  to_string(game.top_card);
+                    cout << "You have not pressed 'Uno' before putting the card. You get two more cards." << endl;
+                    string str = "penalty";
+
                     strcpy(buf, str.c_str());
                     socket->write(buf);
                     socket->flush();
                     socket->waitForBytesWritten(30000);
-                    goto l1;
+                    continue;
                 }
             }
 

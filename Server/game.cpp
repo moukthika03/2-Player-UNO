@@ -1,9 +1,5 @@
-#include "game.h"
-#include "card.h"
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <stdio.h>
 #include <stdlib.h>
 #include <drawfour.h>
 #include <wild.h>
@@ -11,6 +7,8 @@
 #include <reverse.h>
 #include <drawtwo.h>
 #include <skip.h>
+#include "game.h"
+#include "card.h"
 using namespace std;
 
 string Game :: shuffle_and_distribute()
