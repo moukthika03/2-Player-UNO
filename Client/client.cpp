@@ -57,6 +57,22 @@ void client::readyRead()
             }
            l1: game.displayCards();
             cout << "\nEnter the card number you want to choose ( 0 to take a card from deck ): " ;
+            if (game.player.card_list.size() == 2)
+            {
+                char uno[5];
+                cin >> uno;
+                if(strcmp("Uno", uno) != 0)
+                {
+                    cout << "You have not pressed 'Uno' before putting the card. You get two more cards." << endl;
+                    string str = "penalty";
+
+                    strcpy(buf, str.c_str());
+                    socket->write(buf);
+                    socket->flush();
+                    socket->waitForBytesWritten(30000);
+                    continue;
+                }
+            }
             while(true)
             {
                 cin >> selected;
