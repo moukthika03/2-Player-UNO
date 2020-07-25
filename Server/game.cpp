@@ -105,8 +105,8 @@ void Game::displayCards()
 
 bool Game::verify(int chosen)
 {
-    cout << "\nTop card is " << top_card << endl;
-    cout << "Chosen card is " << chosen << endl;
+    /*cout << "\nTop card is " << top_card << endl;
+    cout << "Chosen card is " << chosen << endl;*/
     if(top_card == -1 && (chosen >= 1 || chosen <= 25))
         return true;
     if(top_card == -2 && (chosen >= 25 || chosen <= 50))
@@ -120,7 +120,7 @@ bool Game::verify(int chosen)
         return true;
     }
     int i = 1, j = 25;
-    for(; i < 75; i += 25, j += 25)
+    for(; i <= 76; i += 25, j += 25)
     {
         if((i <= chosen && chosen <= j) && (i <= top_card && top_card <= j) )
             return true;
